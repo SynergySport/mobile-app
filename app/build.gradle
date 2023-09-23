@@ -6,15 +6,15 @@ plugins {
 android {
     namespace 'com.synergysport.synergysportandroid'
     compileSdk 34
-
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId "com.synergysport.synergysportandroid"
         minSdk 24
-        //noinspection EditedTargetSdkVersion
         targetSdk 34
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -40,6 +40,9 @@ ext {
     material = "1.9.0"
     constraintlayout = "2.1.4"
 
+    //Lifecycle
+    lifecycle = "2.6.2"
+
     //Testing
     junit = "4.13.2"
     android_junit = "1.1.5"
@@ -53,6 +56,11 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompat"
     implementation "com.google.android.material:material:$material"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+
+    //Lifecycle
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle"
 
     //Testing
     testImplementation "junit:junit:$junit"
