@@ -33,7 +33,7 @@ class AuthFragment : Fragment() {
 
     private fun initViews() {
         binding.submitButton.setOnClickListener {
-            viewModel.onClickAuth()
+            viewModel.onClickAuth("admin","admin")
         }
     }
 
