@@ -7,7 +7,7 @@
     android:paddingHorizontal="15dp">
 
     <EditText
-        android:id="@+id/editTextLogin"
+        android:id="@+id/login_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="username"
@@ -15,7 +15,7 @@
         android:inputType="text" />
 
     <EditText
-        android:id="@+id/editTextPassword"
+        android:id="@+id/password_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints="password"
@@ -23,7 +23,7 @@
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/buttonSubmit"
+        android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

@@ -10,6 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.ShopItemActivity"
-        tools:layout="@layout/fragment_main_screen" />
+        tools:layout="@layout/fragment_main" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
