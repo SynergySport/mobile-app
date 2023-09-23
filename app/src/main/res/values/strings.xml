@@ -3,4 +3,9 @@
 
     <!--MainScreen-->
     <string name="main_screen_fragment_title">MainScreenFragment</string>
+
+    <!--AuthScreen-->
+    <string name="input_username_field">Введите имя пользователя</string>
+    <string name="input_password_field">Введите пароль</string>
+    <string name="send_button_title">Отправить</string>
 </resources>
