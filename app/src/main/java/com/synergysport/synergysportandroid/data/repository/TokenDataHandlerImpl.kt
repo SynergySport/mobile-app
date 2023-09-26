@@ -2,6 +2,7 @@ package com.synergysport.synergysportandroid.data.repository
 
 import android.content.Context
 import com.synergysport.synergysportandroid.data.dto.TokenData
+import com.synergysport.synergysportandroid.domain.TokenDataHandler
 import javax.inject.Inject
 
 class TokenDataHandlerImpl @Inject constructor (private val context: Context): TokenDataHandler {

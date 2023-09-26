@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.data.repository
+package com.synergysport.synergysportandroid.domain
 
 import com.synergysport.synergysportandroid.data.dto.TokenData
 

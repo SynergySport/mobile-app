@@ -4,6 +4,7 @@ import com.synergysport.synergysportandroid.data.api.AuthApi
 import com.synergysport.synergysportandroid.data.dto.TokenData
 import com.synergysport.synergysportandroid.data.dto.UserData
 import com.synergysport.synergysportandroid.domain.AuthRepository
+import com.synergysport.synergysportandroid.domain.TokenDataHandler
 import io.reactivex.Single
 import javax.inject.Inject
 
