@@ -4,17 +4,14 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.synergysport.synergysportandroid.data.RetrofitProvider
 import com.synergysport.synergysportandroid.data.dto.UserData
-import com.synergysport.synergysportandroid.data.repository.AuthRepositoryImpl
 import com.synergysport.synergysportandroid.domain.AuthUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class AuthFragmentViewModel : ViewModel() {
-
-    private val authUseCase: AuthUseCase =
-        AuthUseCase(AuthRepositoryImpl(RetrofitProvider.provideAuthApi()))
+class AuthFragmentViewModel @Inject constructor(private var authUseCase: AuthUseCase) :
+    ViewModel() {
 
     private val _onClickAuthLiveData = MutableLiveData<Unit>()
     val onClickAuthLiveData: LiveData<Unit>

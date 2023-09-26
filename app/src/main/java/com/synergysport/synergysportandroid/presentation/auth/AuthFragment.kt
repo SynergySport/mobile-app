@@ -5,15 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import com.synergysport.synergysportandroid.R
+import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.databinding.FragmentAuthBinding
 import com.synergysport.synergysportandroid.presentation.MainFragment
+import javax.inject.Inject
 
 class AuthFragment : Fragment() {
 
     private lateinit var binding: FragmentAuthBinding
-    private lateinit var viewModel: AuthFragmentViewModel
+
+    @Inject
+    lateinit var viewModel: AuthFragmentViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        (requireActivity().application as SynergySportApp).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,7 +34,6 @@ class AuthFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[AuthFragmentViewModel::class.java]
         initViews()
         bindViewModel()
     }
