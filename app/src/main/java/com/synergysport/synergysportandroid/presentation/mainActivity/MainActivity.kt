@@ -1,11 +1,11 @@
 package com.synergysport.synergysportandroid.presentation.mainActivity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.presentation.MainFragment
-import com.synergysport.synergysportandroid.presentation.auth.AuthFragment
+import com.synergysport.synergysportandroid.presentation.firstStartFragment.FirstStartFragment
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
@@ -17,13 +17,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         (application as SynergySportApp).appComponent.inject(this)
         setContentView(R.layout.activity_main)
-        bindViewModel()
-        mainActivityViewModel.checkUserAuthorized()
+//        bindViewModel()
+//        mainActivityViewModel.checkUserAuthorized()
+        setFirstStartScreen()
     }
 
     private fun bindViewModel() {
         mainActivityViewModel.isAuthorizedLiveData.observe(this) {
-            if (it) setMainScreen() else setAuthScreen()
+            if (it) setMainScreen() else setFirstStartScreen()
         }
     }
 
@@ -35,8 +36,8 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun setAuthScreen() {
-        val fragment = AuthFragment()
+    private fun setFirstStartScreen() {
+        val fragment = FirstStartFragment()
         supportFragmentManager
             .beginTransaction()
             .add(R.id.fragment_container, fragment)

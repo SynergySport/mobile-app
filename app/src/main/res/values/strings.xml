@@ -8,4 +8,8 @@
     <string name="input_username_field">Введите имя пользователя</string>
     <string name="input_password_field">Введите пароль</string>
     <string name="send_button_title">Войти</string>
+
+    <!--FirstStartScreen-->
+    <string name="first_start_screen_title">Двигайся и помогай другим!</string>
+    <string name="first_start_screen_description">Зарабатывай деньги для благотворительности своей активностью</string>
 </resources>
