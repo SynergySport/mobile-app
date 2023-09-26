@@ -18,6 +18,6 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(AuthFragmentViewModel::class)
-    internal abstract fun bindCallsFragmentViewModel(viewModel: AuthFragmentViewModel): ViewModel
+    internal abstract fun bindAuthFragmentViewModel(viewModel: AuthFragmentViewModel): ViewModel
 
 }
