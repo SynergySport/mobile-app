@@ -19,7 +19,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 //        bindViewModel()
 //        mainActivityViewModel.checkUserAuthorized()
-        setFirstStartScreen()
+        //TODO: временно не авторизуемся
+        setMainScreen()
     }
 
     private fun bindViewModel() {

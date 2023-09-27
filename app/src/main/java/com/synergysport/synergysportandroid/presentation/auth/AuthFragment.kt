@@ -44,7 +44,6 @@ class AuthFragment : Fragment() {
             val login = binding.loginTv.text.toString()
             val password = binding.passwordTv.text.toString()
             viewModel.onClickAuth(login, password)
-
         }
     }
 
