@@ -17,4 +17,9 @@
     <string name="first_start_screen_title">Двигайся и помогай другим!</string>
     <string name="first_start_screen_description">Зарабатывай деньги для благотворительности своей активностью</string>
     <string name="login_button_title">Войти по логину</string>
+
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+
 </resources>

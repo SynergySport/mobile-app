@@ -10,6 +10,7 @@ import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.databinding.FragmentAuthBinding
 import com.synergysport.synergysportandroid.presentation.MainFragment
+import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import javax.inject.Inject
 
 class AuthFragment : Fragment() {
@@ -30,6 +31,7 @@ class AuthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAuthBinding.inflate(inflater, container, false)
+        (requireActivity() as? ToolbarVisibilityListener)?.hideToolbar()
         return binding.root
     }
 
@@ -69,5 +71,6 @@ class AuthFragment : Fragment() {
             .beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
+        (requireActivity() as? ToolbarVisibilityListener)?.showToolbar()
     }
 }
