@@ -16,7 +16,7 @@
         app:layout_constraintBottom_toTopOf="@id/layout_login"
         app:layout_constraintEnd_toEndOf="@id/layout_login"
         app:layout_constraintStart_toStartOf="@id/layout_login"
-        android:text="Вход"/>
+        android:text="@string/login_title"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_login"
@@ -24,7 +24,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:hint="Логин"
+        android:hint="@string/login_text_view_title"
         app:layout_constraintBottom_toTopOf="@id/layout_password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,6 +32,7 @@
         app:layout_constraintWidth_percent="0.9">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:lines="1"
@@ -46,13 +47,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Пароль"
+        android:hint="@string/password_text_view_title"
         app:endIconMode="password_toggle"
         app:layout_constraintEnd_toEndOf="@id/layout_login"
         app:layout_constraintStart_toStartOf="@id/layout_login"
         app:layout_constraintTop_toBottomOf="@id/layout_login">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_tv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
@@ -68,7 +70,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="85dp"
-        android:text="Вход"
+        android:text="@string/auth_button_title"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@id/layout_login"
         app:layout_constraintStart_toStartOf="@id/layout_login" />

@@ -17,8 +17,16 @@ class AuthFragmentViewModel @Inject constructor(private var authUseCase: AuthUse
     val onClickAuthLiveData: LiveData<Unit>
         get() = _onClickAuthLiveData
 
+    private val _errorAuthLiveData = MutableLiveData<Unit>()
+    val errorAuthLiveData: LiveData<Unit>
+        get() = _onClickAuthLiveData
+
     @SuppressLint("CheckResult")
-    fun onClickAuth(username: String, password: String) {
+    fun onClickAuth(username: String?, password: String?) {
+        if (username.isNullOrBlank() || password.isNullOrBlank()){
+            _errorAuthLiveData.value = Unit
+            return
+        }
         val userData = UserData(username, password)
         authUseCase.auth(userData).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe({

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
@@ -40,14 +41,27 @@ class AuthFragment : Fragment() {
 
     private fun initViews() {
         binding.submitButton.setOnClickListener {
-            viewModel.onClickAuth("admin", "admin")
+            val login = binding.loginTv.text.toString()
+            val password = binding.passwordTv.text.toString()
+            viewModel.onClickAuth(login, password)
+
         }
     }
 
     private fun bindViewModel() {
-        viewModel.onClickAuthLiveData.observe(viewLifecycleOwner) {
-            setMainScreen()
+        with(viewModel) {
+            onClickAuthLiveData.observe(viewLifecycleOwner) {
+                setMainScreen()
+            }
+            errorAuthLiveData.observe(viewLifecycleOwner) {
+                showErrorAuthMessage()
+            }
         }
+    }
+
+    private fun showErrorAuthMessage() {
+        Toast.makeText(requireContext(), getString(R.string.error_auth_message), Toast.LENGTH_LONG)
+            .show()
     }
 
     private fun setMainScreen() {
