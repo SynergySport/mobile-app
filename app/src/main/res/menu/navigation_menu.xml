@@ -4,15 +4,23 @@
     tools:ignore="HardcodedText">
 
     <item
-        android:id="@+id/nav_account"
-        android:title="My Account" />
+        android:id="@+id/nav_start_training"
+        android:title="@string/start_training" />
+
+    <item
+        android:id="@+id/nav_my_trainings"
+        android:title="@string/my_trainings" />
+
+    <item
+        android:id="@+id/nav_my_achievements"
+        android:title="@string/my_achievements" />
+
+    <item
+        android:id="@+id/nav_events"
+        android:title="@string/events" />
 
     <item
         android:id="@+id/nav_settings"
-        android:title="Settings" />
-
-    <item
-        android:id="@+id/nav_logout"
-        android:title="Logout" />
+        android:title="@string/settings" />
 
 </menu>
