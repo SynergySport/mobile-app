@@ -24,11 +24,9 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
         super.onCreate(savedInstanceState)
         (application as SynergySportApp).appComponent.inject(this)
         setContentView(R.layout.activity_main)
-//        bindViewModel()
-//        mainActivityViewModel.checkUserAuthorized()
-        //TODO: временно не авторизуемся
-        setMainScreen()
         initToolbar()
+        bindViewModel()
+        mainActivityViewModel.checkUserAuthorized()
     }
 
     private fun initToolbar() {

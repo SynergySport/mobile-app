@@ -26,5 +26,6 @@
     <string name="my_achievements">Мои достижения</string>
     <string name="events">События</string>
     <string name="settings">Настройки</string>
+    <string name="logout">Выход</string>
 
 </resources>

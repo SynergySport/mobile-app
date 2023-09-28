@@ -19,7 +19,7 @@ class AuthFragmentViewModel @Inject constructor(private var authUseCase: AuthUse
 
     private val _errorAuthLiveData = MutableLiveData<Unit>()
     val errorAuthLiveData: LiveData<Unit>
-        get() = _onClickAuthLiveData
+        get() = _errorAuthLiveData
 
     @SuppressLint("CheckResult")
     fun onClickAuth(username: String?, password: String?) {
