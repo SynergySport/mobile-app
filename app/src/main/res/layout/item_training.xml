@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="15dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="150dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/training_type_tv"
+            style="@style/TitleTextStyleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Бег" />
+
+        <TextView
+            android:id="@+id/training_date_tv"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="24.09.2023 18:55" />
+
+        <TextView
+            android:id="@+id/cores_tv"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Баллы"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/training_type_tv" />
+
+        <TextView
+            android:id="@+id/time_tv"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="40dp"
+            android:text="Время"
+            app:layout_constraintTop_toTopOf="@id/training_type_tv"
+            app:layout_constraintStart_toEndOf="@id/cores_tv" />
+
+        <TextView
+            android:id="@+id/cores_count_tv"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="5"
+            app:layout_constraintTop_toTopOf="@id/cores_tv"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/time_count_tv"
+            style="@style/NormalTextStyleBlack"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginStart="40dp"
+            android:text="14 min"
+            app:layout_constraintTop_toTopOf="@id/time_tv"
+            app:layout_constraintStart_toEndOf="@id/cores_count_tv" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>
