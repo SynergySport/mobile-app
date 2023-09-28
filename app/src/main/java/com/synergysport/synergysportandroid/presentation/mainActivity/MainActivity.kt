@@ -4,13 +4,17 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.presentation.MainFragment
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import com.synergysport.synergysportandroid.presentation.firstStartFragment.FirstStartFragment
+import com.synergysport.synergysportandroid.presentation.trainingsFragment.TrainingsFragment
 import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
@@ -41,6 +45,20 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
         // to make the Navigation drawer icon always appear on the action bar
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        findViewById<NavigationView>(R.id.nav_view).setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_start_training -> {
+
+                }
+
+                R.id.nav_my_trainings -> {
+                    setTrainingsScreen()
+                }
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
+        }
     }
 
     private fun bindViewModel() {
@@ -65,9 +83,17 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
             .commit()
     }
 
+    private fun setTrainingsScreen() {
+        val fragment = TrainingsFragment()
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
-            true
+            return true
         } else super.onOptionsItemSelected(item)
     }
 
