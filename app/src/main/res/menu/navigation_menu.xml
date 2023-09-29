@@ -23,12 +23,4 @@
         android:id="@+id/nav_events"
         android:title="@string/events" />
 
-    <item
-        android:id="@+id/nav_settings"
-        android:title="@string/settings" />
-
-    <item
-        android:id="@+id/nav_logout"
-        android:title="@string/logout" />
-
 </menu>

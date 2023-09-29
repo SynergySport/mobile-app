@@ -41,4 +41,7 @@
     <!--AchievementsScreen-->
     <string name="achievements_screen_title">AchievementsScreen</string>
 
+    <!--EventsScreen-->
+    <string name="events_screen">EventsScreen</string>
+
 </resources>
