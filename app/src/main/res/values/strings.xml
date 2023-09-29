@@ -38,4 +38,7 @@
     <!--TrackerScreen-->
     <string name="tracker_screen_title">TrackerScreen</string>
 
+    <!--AchievementsScreen-->
+    <string name="achievements_screen_title">AchievementsScreen</string>
+
 </resources>

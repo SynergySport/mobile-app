@@ -12,6 +12,7 @@ import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.presentation.MainFragment
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
+import com.synergysport.synergysportandroid.presentation.fragments.achievementsFragment.AchievementsFragment
 import com.synergysport.synergysportandroid.presentation.fragments.firstStartFragment.FirstStartFragment
 import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragment
 import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragment
@@ -61,6 +62,10 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
                 R.id.nav_my_trainings -> {
                     Navigator.navigateReplace(TrainingsFragment(), supportFragmentManager)
+                }
+
+                R.id.nav_my_achievements -> {
+                    Navigator.navigateReplace(AchievementsFragment(), supportFragmentManager)
                 }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
