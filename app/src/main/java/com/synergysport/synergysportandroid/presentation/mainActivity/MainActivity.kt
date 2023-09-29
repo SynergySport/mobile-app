@@ -10,8 +10,10 @@ import com.google.android.material.navigation.NavigationView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.presentation.MainFragment
+import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import com.synergysport.synergysportandroid.presentation.firstStartFragment.FirstStartFragment
+import com.synergysport.synergysportandroid.presentation.profileScreen.ProfileFragment
 import com.synergysport.synergysportandroid.presentation.trainingsFragment.TrainingsFragment
 import javax.inject.Inject
 
@@ -48,12 +50,16 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
         findViewById<NavigationView>(R.id.nav_view).setNavigationItemSelectedListener {
             when (it.itemId) {
+                R.id.nav_profile -> {
+                    Navigator.navigateReplace(ProfileFragment(), supportFragmentManager)
+                }
+
                 R.id.nav_start_training -> {
 
                 }
 
                 R.id.nav_my_trainings -> {
-                    setTrainingsScreen()
+                    Navigator.navigateReplace(TrainingsFragment(), supportFragmentManager)
                 }
             }
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -63,32 +69,14 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
     private fun bindViewModel() {
         mainActivityViewModel.isAuthorizedLiveData.observe(this) {
-            if (it) setMainScreen() else setFirstStartScreen()
+            if (it) Navigator.navigateReplace(
+                MainFragment(),
+                supportFragmentManager
+            ) else Navigator.navigateReplace(
+                FirstStartFragment(),
+                supportFragmentManager
+            )
         }
-    }
-
-    private fun setMainScreen() {
-        val fragment = MainFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .commit()
-    }
-
-    private fun setFirstStartScreen() {
-        val fragment = FirstStartFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .add(R.id.fragment_container, fragment)
-            .commit()
-    }
-
-    private fun setTrainingsScreen() {
-        val fragment = TrainingsFragment()
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, fragment)
-            .commit()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -32,4 +32,7 @@
     <!--TrainingsScreen-->
     <string name="trainings_title">Trainings</string>
 
+    <!--ProfileScreen-->
+    <string name="profile_screen_title">ProfileScreen</string>
+
 </resources>
