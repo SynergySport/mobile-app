@@ -13,7 +13,7 @@ import com.synergysport.synergysportandroid.presentation.MainFragment
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import com.synergysport.synergysportandroid.presentation.firstStartFragment.FirstStartFragment
-import com.synergysport.synergysportandroid.presentation.profileScreen.ProfileFragment
+import com.synergysport.synergysportandroid.presentation.profileFragment.ProfileFragment
 import com.synergysport.synergysportandroid.presentation.trainingsFragment.TrainingsFragment
 import javax.inject.Inject
 
