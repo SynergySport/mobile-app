@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.presentation.trainingsFragment
+package com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment
 
 import android.view.View
 import android.widget.TextView

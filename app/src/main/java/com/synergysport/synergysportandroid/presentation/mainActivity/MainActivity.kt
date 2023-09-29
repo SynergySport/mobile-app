@@ -12,10 +12,10 @@ import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.presentation.MainFragment
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
-import com.synergysport.synergysportandroid.presentation.firstStartFragment.FirstStartFragment
-import com.synergysport.synergysportandroid.presentation.profileFragment.ProfileFragment
-import com.synergysport.synergysportandroid.presentation.trackerFragment.TrackerFragment
-import com.synergysport.synergysportandroid.presentation.trainingsFragment.TrainingsFragment
+import com.synergysport.synergysportandroid.presentation.fragments.firstStartFragment.FirstStartFragment
+import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragment
+import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragment
+import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.TrainingsFragment
 import javax.inject.Inject
 
 

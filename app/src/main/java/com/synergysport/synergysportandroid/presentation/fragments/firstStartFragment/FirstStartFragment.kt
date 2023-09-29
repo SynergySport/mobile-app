@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.presentation.firstStartFragment
+package com.synergysport.synergysportandroid.presentation.fragments.firstStartFragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

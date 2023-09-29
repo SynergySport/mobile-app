@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.presentation.trainingsFragment
+package com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment
 
 import androidx.recyclerview.widget.DiffUtil
 import com.synergysport.synergysportandroid.domain.entity.Training
