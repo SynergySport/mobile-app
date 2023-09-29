@@ -3,6 +3,7 @@ package com.synergysport.synergysportandroid.di
 import com.synergysport.synergysportandroid.di.modules.AppModule
 import com.synergysport.synergysportandroid.di.modules.DataModule
 import com.synergysport.synergysportandroid.di.modules.HandlersModule
+import com.synergysport.synergysportandroid.di.modules.PermissionsControllerModule
 import com.synergysport.synergysportandroid.di.modules.RepositoryModule
 import com.synergysport.synergysportandroid.di.modules.ViewModelModule
 import com.synergysport.synergysportandroid.presentation.auth.AuthFragment
@@ -17,7 +18,8 @@ import javax.inject.Singleton
         DataModule::class,
         ViewModelModule::class,
         HandlersModule::class,
-        AppModule::class
+        AppModule::class,
+        PermissionsControllerModule::class
     ]
 )
 interface AppComponent {

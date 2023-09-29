@@ -2,6 +2,7 @@ package com.synergysport.synergysportandroid.presentation.mainActivity
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -11,6 +12,7 @@ import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.presentation.MainFragment
 import com.synergysport.synergysportandroid.presentation.common.Navigator
+import com.synergysport.synergysportandroid.presentation.common.PermissionsController
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import com.synergysport.synergysportandroid.presentation.fragments.achievementsFragment.AchievementsFragment
 import com.synergysport.synergysportandroid.presentation.fragments.eventsFragment.EventsFragment
@@ -20,22 +22,38 @@ import com.synergysport.synergysportandroid.presentation.fragments.trackerFragme
 import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.TrainingsFragment
 import javax.inject.Inject
 
-
 class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
 
     @Inject
     lateinit var mainActivityViewModel: MainActivityViewModel
 
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+    @Inject
+    lateinit var permissionsController: PermissionsController
+
+    private val requestPermissionsLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) {}
+
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         (application as SynergySportApp).appComponent.inject(this)
         setContentView(R.layout.activity_main)
+        checkPermissions()
         initToolbar()
         bindViewModel()
         mainActivityViewModel.checkUserAuthorized()
+    }
+
+    private fun checkPermissions() {
+        permissionsController.getUnacceptedPermissions().apply {
+            if (isNotEmpty()) {
+                requestPermissionsLauncher.launch(this)
+            }
+        }
     }
 
     private fun initToolbar() {
