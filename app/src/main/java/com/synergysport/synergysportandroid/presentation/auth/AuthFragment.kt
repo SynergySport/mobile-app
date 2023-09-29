@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.databinding.FragmentAuthBinding
-import com.synergysport.synergysportandroid.presentation.MainFragment
+import com.synergysport.synergysportandroid.presentation.fragments.startTrainingFragment.StartTrainingFragment
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import javax.inject.Inject
@@ -53,7 +53,7 @@ class AuthFragment : Fragment() {
     private fun bindViewModel() {
         with(viewModel) {
             onClickAuthLiveData.observe(viewLifecycleOwner) {
-                Navigator.navigateReplace(MainFragment(), parentFragmentManager)
+                Navigator.navigateReplace(StartTrainingFragment(), parentFragmentManager)
                 (requireActivity() as? ToolbarVisibilityListener)?.showToolbar()
             }
             errorAuthLiveData.observe(viewLifecycleOwner) {

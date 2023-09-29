@@ -10,7 +10,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
-import com.synergysport.synergysportandroid.presentation.MainFragment
+import com.synergysport.synergysportandroid.presentation.fragments.startTrainingFragment.StartTrainingFragment
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.PermissionsController
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
@@ -93,7 +93,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
     private fun bindViewModel() {
         mainActivityViewModel.isAuthorizedLiveData.observe(this) {
             if (it) Navigator.navigateReplace(
-                MainFragment(),
+                StartTrainingFragment(),
                 supportFragmentManager
             ) else Navigator.navigateReplace(
                 FirstStartFragment(),

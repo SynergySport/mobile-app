@@ -3,12 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.MainFragment">
+    tools:context=".presentation.fragments.startTrainingFragment.StartTrainingFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:text="@string/main_screen_fragment_title" />
+        android:text="@string/start_training_fragment_title" />
 
 </FrameLayout>

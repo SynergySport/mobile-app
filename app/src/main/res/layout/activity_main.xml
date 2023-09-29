@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.ShopItemActivity"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_start_training" />
 
     <!-- this the navigation view which draws and shows the navigation drawer -->
     <!-- include the menu created in the menu folder -->
