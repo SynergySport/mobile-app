@@ -18,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            style="@style/NormalTextStyleBlack"
+            style="@style/SmallTextStyleBlack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
@@ -26,15 +26,15 @@
             android:text="Баллы" />
 
         <TextView
-            style="@style/NormalTextStyleBlack"
+            style="@style/SmallTextStyleBlack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:text="Дистанция" />
+            android:text="Количество шагов" />
 
         <TextView
-            style="@style/NormalTextStyleBlack"
+            style="@style/SmallTextStyleBlack"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
@@ -79,7 +79,7 @@
         android:id="@+id/current_metric_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="14 14"
+        android:text="0"
         android:textColor="@color/black"
         android:textSize="60sp"
         android:textStyle="bold"
@@ -94,7 +94,7 @@
         android:id="@+id/current_metric_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Мин Сек"
+        android:text="Шагов"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
