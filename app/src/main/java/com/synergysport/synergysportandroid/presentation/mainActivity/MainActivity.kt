@@ -14,6 +14,7 @@ import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import com.synergysport.synergysportandroid.presentation.firstStartFragment.FirstStartFragment
 import com.synergysport.synergysportandroid.presentation.profileFragment.ProfileFragment
+import com.synergysport.synergysportandroid.presentation.trackerFragment.TrackerFragment
 import com.synergysport.synergysportandroid.presentation.trainingsFragment.TrainingsFragment
 import javax.inject.Inject
 
@@ -55,7 +56,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
                 }
 
                 R.id.nav_start_training -> {
-
+                    Navigator.navigateReplace(TrackerFragment(), supportFragmentManager)
                 }
 
                 R.id.nav_my_trainings -> {

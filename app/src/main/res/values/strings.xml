@@ -35,4 +35,7 @@
     <!--ProfileScreen-->
     <string name="profile_screen_title">ProfileScreen</string>
 
+    <!--TrackerScreen-->
+    <string name="tracker_screen_title">TrackerScreen</string>
+
 </resources>
