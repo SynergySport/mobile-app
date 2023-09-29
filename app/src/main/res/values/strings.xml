@@ -21,6 +21,7 @@
     <!--Navigation Drawer-->
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
+    <string name="nav_profile">Профиль</string>
     <string name="start_training">Начать тренировку</string>
     <string name="my_trainings">Мои тренировки</string>
     <string name="my_achievements">Мои достижения</string>
