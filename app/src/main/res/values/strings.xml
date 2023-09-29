@@ -44,4 +44,7 @@
     <!--EventsScreen-->
     <string name="events_screen">EventsScreen</string>
 
+    <!--SelectActivityTypeScreen-->
+    <string name="select_activity_type_screen_title">SelectActivityTypeScreen</string>
+
 </resources>
