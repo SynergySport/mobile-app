@@ -1,9 +1,9 @@
 package com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter
 
-import android.app.Activity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.synergysport.synergysportandroid.domain.entity.ActivityItem
 import com.synergysport.synergysportandroid.domain.useCase.GetActivitiesUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -13,8 +13,8 @@ import javax.inject.Inject
 class SelectActivityViewModel @Inject constructor(
     private val getActivitiesUseCase: GetActivitiesUseCase
 ) : ViewModel() {
-    private val _allActivitiesLiveData = MutableLiveData<List<Activity>>()
-    val allActivitiesLiveData: LiveData<List<Activity>>
+    private val _allActivitiesLiveData = MutableLiveData<List<ActivityItem>>()
+    val allActivitiesLiveData: LiveData<List<ActivityItem>>
         get() = _allActivitiesLiveData
 
     private val disposables = CompositeDisposable()

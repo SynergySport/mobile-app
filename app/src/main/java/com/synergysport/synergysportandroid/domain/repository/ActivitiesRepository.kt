@@ -1,9 +1,9 @@
 package com.synergysport.synergysportandroid.domain.repository
 
-import android.app.Activity
+import com.synergysport.synergysportandroid.domain.entity.ActivityItem
 import io.reactivex.Single
 
 interface ActivitiesRepository {
-    fun getAllActivities(): Single<List<Activity>>
-    fun getFavoriteActivities(): Single<List<Activity>>
+    fun getAllActivities(): Single<List<ActivityItem>>
+    fun getFavoriteActivities(): Single<List<ActivityItem>>
 }
