@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.domain.entity.Training
+import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.adapter.TrainingsListAdapter
 
 class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
 

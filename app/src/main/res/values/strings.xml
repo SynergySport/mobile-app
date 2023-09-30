@@ -49,5 +49,6 @@
     <string name="activity_type_title">Тип активности</string>
     <string name="favorites_tab_title">Избранное</string>
     <string name="all_tab_title">Все</string>
+    <string name="apply_button_title">Подтвердить</string>
 
 </resources>

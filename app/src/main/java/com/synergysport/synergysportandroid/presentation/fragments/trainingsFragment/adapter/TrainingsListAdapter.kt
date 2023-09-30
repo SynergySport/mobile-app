@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment
+package com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

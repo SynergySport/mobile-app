@@ -7,6 +7,7 @@
     android:padding="20dp">
 
     <TextView
+        android:id="@+id/activity_name"
         style="@style/NormalTextStyleBlack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +16,7 @@
         tools:text="Бег" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/activity_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
