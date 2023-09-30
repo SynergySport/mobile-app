@@ -1,6 +1,7 @@
-package com.synergysport.synergysportandroid.domain
+package com.synergysport.synergysportandroid.domain.useCase
 
 import com.synergysport.synergysportandroid.data.dto.UserData
+import com.synergysport.synergysportandroid.domain.repository.AuthRepository
 import javax.inject.Inject
 
 class AuthUseCase @Inject constructor(

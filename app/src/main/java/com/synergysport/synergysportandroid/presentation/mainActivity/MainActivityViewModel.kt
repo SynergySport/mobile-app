@@ -3,7 +3,7 @@ package com.synergysport.synergysportandroid.presentation.mainActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.synergysport.synergysportandroid.domain.TokenDataHandler
+import com.synergysport.synergysportandroid.domain.handler.TokenDataHandler
 import javax.inject.Inject
 
 class MainActivityViewModel @Inject constructor(

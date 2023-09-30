@@ -1,6 +1,6 @@
 package com.synergysport.synergysportandroid.di.modules
 
-import com.synergysport.synergysportandroid.domain.TokenDataHandler
+import com.synergysport.synergysportandroid.domain.handler.TokenDataHandler
 import com.synergysport.synergysportandroid.data.repository.TokenDataHandlerImpl
 import dagger.Binds
 import dagger.Module
