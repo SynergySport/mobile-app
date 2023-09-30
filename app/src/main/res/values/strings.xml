@@ -3,6 +3,7 @@
 
     <!--StartTrainingScreen-->
     <string name="start_training_fragment_title">StartTrainingFragment</string>
+    <string name="start_training_button">Старт</string>
 
     <!--AuthScreen-->
     <string name="input_username_field">Введите имя пользователя</string>
