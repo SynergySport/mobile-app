@@ -25,16 +25,21 @@ class SelectActivityFragment : Fragment(R.layout.fragment_select_activity) {
     }
 
     private fun bindViewModel() {
-        viewModel.allActivitiesLiveData.observe(viewLifecycleOwner) {
-            activityListAdapter.submitList(
-                it
-            )
+        with(viewModel) {
+            allActivitiesLiveData.observe(viewLifecycleOwner) {
+                activityListAdapter.submitList(
+                    it
+                )
+            }
         }
     }
 
     private fun initRecyclerView(view: View) {
         val activitiesRv = view.findViewById<RecyclerView>(R.id.activities_rv)
         activityListAdapter = ActivityListAdapter()
+        activityListAdapter.onItemClicked = {
+            viewModel.onClickActivityItem(it)
+        }
         with(activitiesRv) {
             adapter = activityListAdapter
         }

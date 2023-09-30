@@ -5,5 +5,6 @@ import androidx.annotation.DrawableRes
 data class ActivityItem(
     val id: Int,
     val name: String,
-    @DrawableRes val icon: Int
+    @DrawableRes val icon: Int,
+    val isSelected: Boolean = false
 )

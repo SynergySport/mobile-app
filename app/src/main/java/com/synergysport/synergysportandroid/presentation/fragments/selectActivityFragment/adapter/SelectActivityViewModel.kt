@@ -17,6 +17,10 @@ class SelectActivityViewModel @Inject constructor(
     val allActivitiesLiveData: LiveData<List<ActivityItem>>
         get() = _allActivitiesLiveData
 
+    private val _selectedActivityItemLiveData = MutableLiveData<ActivityItem>()
+    val selectedActivityItemLiveData: LiveData<ActivityItem>
+        get() = _selectedActivityItemLiveData
+
     private val disposables = CompositeDisposable()
 
     fun init() {
@@ -24,13 +28,20 @@ class SelectActivityViewModel @Inject constructor(
     }
 
     private fun getAllActivities() {
-        disposables.add(getActivitiesUseCase.getAllActivities().subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe({
-                _allActivitiesLiveData.value = it
-            }, {
-                it.printStackTrace()
-            })
+        disposables.add(
+            getActivitiesUseCase.getAllActivities().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    _allActivitiesLiveData.value = it
+                }, {
+                    it.printStackTrace()
+                })
         )
+    }
+
+    fun onClickActivityItem(item: ActivityItem) {
+        _selectedActivityItemLiveData.value = item.copy(isSelected = true)
+        _allActivitiesLiveData.value =
+            _allActivitiesLiveData.value?.map { if (it.id == item.id) it.copy(isSelected = true) else it.copy(isSelected = false) }
     }
 
     override fun onCleared() {
