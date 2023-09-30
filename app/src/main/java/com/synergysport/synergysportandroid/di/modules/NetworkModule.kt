@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class DataModule {
+class NetworkModule {
 
     @Provides
     @Singleton

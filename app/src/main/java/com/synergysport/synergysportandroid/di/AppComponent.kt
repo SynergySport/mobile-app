@@ -1,7 +1,8 @@
 package com.synergysport.synergysportandroid.di
 
 import com.synergysport.synergysportandroid.di.modules.AppModule
-import com.synergysport.synergysportandroid.di.modules.DataModule
+import com.synergysport.synergysportandroid.di.modules.DatabaseModule
+import com.synergysport.synergysportandroid.di.modules.NetworkModule
 import com.synergysport.synergysportandroid.di.modules.HandlersModule
 import com.synergysport.synergysportandroid.di.modules.PermissionsControllerModule
 import com.synergysport.synergysportandroid.di.modules.RepositoryModule
@@ -15,11 +16,12 @@ import javax.inject.Singleton
 @Component(
     modules = [
         RepositoryModule::class,
-        DataModule::class,
+        NetworkModule::class,
         ViewModelModule::class,
         HandlersModule::class,
         AppModule::class,
-        PermissionsControllerModule::class
+        PermissionsControllerModule::class,
+        DatabaseModule::class
     ]
 )
 interface AppComponent {
