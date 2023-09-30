@@ -37,7 +37,8 @@
     <string name="profile_screen_title">ProfileScreen</string>
 
     <!--TrackerScreen-->
-    <string name="tracker_screen_title">TrackerScreen</string>
+    <string name="scores_title">Баллы</string>
+    <string name="time_title">Время</string>
 
     <!--AchievementsScreen-->
     <string name="achievements_screen_title">AchievementsScreen</string>

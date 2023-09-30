@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:text="Баллы" />
+            android:text="@string/scores_title" />
 
         <TextView
             style="@style/SmallTextStyleBlack"
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:text="Количество шагов" />
+            tools:text="Количество шагов" />
 
         <TextView
             style="@style/SmallTextStyleBlack"
@@ -39,7 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:text="Время" />
+            android:text="@string/time_title" />
     </LinearLayout>
 
     <LinearLayout
@@ -54,32 +54,34 @@
         app:layout_constraintTop_toBottomOf="@id/metrics_layout">
 
         <TextView
+            android:id="@+id/current_units_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:text="1" />
+            tools:text="1" />
 
         <TextView
+            android:id="@+id/second_metric_value_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:text="1.2 km" />
+            tools:text="13" />
 
         <TextView
+            android:id="@+id/time_value_tv"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.3"
             android:gravity="center"
-            android:text="14 min\n 15 sec" />
+            tools:text="14 min\n 15 sec" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/current_metric_value"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0"
         android:textColor="@color/black"
         android:textSize="60sp"
         android:textStyle="bold"
@@ -88,42 +90,44 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/metrics_values_layout"
-        app:layout_constraintVertical_bias="0.273" />
+        app:layout_constraintVertical_bias="0.273"
+        tools:text="0" />
 
     <TextView
-        android:id="@+id/current_metric_name"
+        android:id="@+id/unit_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Шагов"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/current_metric_value" />
+        app:layout_constraintTop_toBottomOf="@+id/current_metric_value"
+        tools:text="Шагов" />
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/current_metric_name"
+        app:layout_constraintTop_toBottomOf="@+id/unit_name_tv"
         app:layout_constraintVertical_bias="0.734">
+
         <ImageView
             android:id="@+id/pause_button"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/round_button"
-            android:padding="15dp"
             android:layout_margin="6dp"
+            android:background="@drawable/round_button"
+            android:importantForAccessibility="no"
+            android:padding="15dp"
             android:src="@drawable/ic_pause"
-            android:textColor="@android:color/white"
-            android:importantForAccessibility="no" />
+            android:textColor="@android:color/white" />
 
         <ImageView
             android:id="@+id/stop_button"
@@ -131,10 +135,10 @@
             android:layout_height="66dp"
             android:layout_margin="6dp"
             android:background="@drawable/round_button"
+            android:importantForAccessibility="no"
             android:padding="10dp"
             android:src="@drawable/ic_stop"
-            android:textColor="@android:color/white"
-            android:importantForAccessibility="no" />
+            android:textColor="@android:color/white" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

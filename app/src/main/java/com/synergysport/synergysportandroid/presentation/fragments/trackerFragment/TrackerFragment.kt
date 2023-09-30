@@ -12,7 +12,7 @@ import com.synergysport.synergysportandroid.databinding.FragmentTrackerBinding
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import javax.inject.Inject
 
-class TrackerFragment : Fragment(R.layout.fragment_tracker) {
+class TrackerFragment : Fragment() {
 
     private lateinit var binding: FragmentTrackerBinding
 
