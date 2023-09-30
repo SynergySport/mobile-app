@@ -13,10 +13,15 @@ import javax.inject.Inject
 class StepTrackerImpl @Inject constructor(
     private val context: Context
 ) : StepTracker, SensorEventListener {
+
     private var sensorManager: SensorManager =
         context.getSystemService(Context.SENSOR_SERVICE) as SensorManager
 
     private val stepsSubject: Subject<Int> = PublishSubject.create()
+
+    private var isRunning = false
+
+    private var previousStepsCount = 0
 
     override fun start() {
         val stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
@@ -25,7 +30,6 @@ class StepTrackerImpl @Inject constructor(
             return
         }
         sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
-
     }
 
     override fun stop() {
@@ -49,7 +53,12 @@ class StepTrackerImpl @Inject constructor(
     override fun listen(): Subject<Int> = stepsSubject
 
     override fun onSensorChanged(event: SensorEvent) {
-        stepsSubject.onNext(event.values[0].toInt())
+        val currentStepsCount = event.values[0].toInt()
+        if (!isRunning) {
+            isRunning = true
+            previousStepsCount = currentStepsCount
+        }
+        stepsSubject.onNext(currentStepsCount - previousStepsCount)
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
