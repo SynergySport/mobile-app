@@ -37,7 +37,6 @@ class TrackerFragmentViewModel @Inject constructor(
     private val disposables = CompositeDisposable()
 
     fun init() {
-        stepTracker.start()
         disposables.add(stepTracker.listen().subscribe {
             _stepsCountLiveData.value = it
         })
@@ -72,19 +71,34 @@ class TrackerFragmentViewModel @Inject constructor(
         }
     }
 
-    fun getActivity() {
+    private fun getActivity() {
         disposables.add(
             getActivitiesUseCase.getSelectedActivity().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe({
                     _setSelectedActivityLiveData.value = it
+                    proceedActivity(it)
                 }, {
                     it.printStackTrace()
                 })
         )
     }
 
+    private fun proceedActivity(activityItem: ActivityItem) {
+        when (activityItem.unit) {
+            UNIT_STEP -> stepTracker.start()
+            UNIT_KM -> stepTracker.start()
+            UNIT_MIN -> stepTracker.start()
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         disposables.dispose()
+    }
+
+    companion object {
+        private const val UNIT_STEP = "step"
+        private const val UNIT_KM = "km"
+        private const val UNIT_MIN = "min"
     }
 }

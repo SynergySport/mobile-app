@@ -33,6 +33,7 @@ class ActivitiesRepositoryImpl @Inject constructor(
             ActivityItem(
                 id = it.id,
                 name = it.name,
+                unit = it.unit,
                 unitLabel = it.unitLabel,
                 icon = R.drawable.ic_run
             )

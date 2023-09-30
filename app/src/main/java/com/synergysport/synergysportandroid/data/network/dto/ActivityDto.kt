@@ -7,11 +7,13 @@ import com.synergysport.synergysportandroid.domain.entity.ActivityItem
 data class ActivityDto(
     val id: Int,
     val title: String,
+    val unit: String,
     val unit_label: String
 ) {
     fun toActivityItem() = ActivityItem(
         id = id,
         name = title,
+        unit = unit,
         unitLabel = unit_label,
         icon = R.drawable.ic_run,
     )
@@ -19,6 +21,7 @@ data class ActivityDto(
     fun toActivityEntity() = ActivityEntity(
         id = id,
         name = title,
+        unit = unit,
         unitLabel = unit_label
     )
 }
