@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.data.api
+package com.synergysport.synergysportandroid.data.network.api
 
 import com.synergysport.synergysportandroid.data.dto.TokenData
 import com.synergysport.synergysportandroid.data.dto.UserData

@@ -1,8 +1,8 @@
 package com.synergysport.synergysportandroid.di.modules
 
 import com.google.gson.Gson
-import com.synergysport.synergysportandroid.data.api.ActivitiesApi
-import com.synergysport.synergysportandroid.data.api.AuthApi
+import com.synergysport.synergysportandroid.data.network.api.ActivitiesApi
+import com.synergysport.synergysportandroid.data.network.api.AuthApi
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
