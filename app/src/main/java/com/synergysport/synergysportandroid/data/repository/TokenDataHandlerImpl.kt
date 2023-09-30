@@ -26,7 +26,7 @@ class TokenDataHandlerImpl @Inject constructor(private val context: Context) : T
 
 
     companion object {
-        const val SHARED_PREFS_FILE_NAME = "synergy_sport_prefs"
-        const val TOKEN_DATA_KEY = "token_data"
+        private const val SHARED_PREFS_FILE_NAME = "synergy_sport_prefs"
+        private const val TOKEN_DATA_KEY = "token_data"
     }
 }
