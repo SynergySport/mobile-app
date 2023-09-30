@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.presentation.fragments.selectActivityTypeFragment.adapter
+package com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.synergysport.synergysportandroid.domain.entity.Activity

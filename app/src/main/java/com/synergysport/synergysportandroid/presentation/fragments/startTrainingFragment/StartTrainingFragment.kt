@@ -7,10 +7,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.presentation.common.Navigator
-import com.synergysport.synergysportandroid.presentation.fragments.selectActivityTypeFragment.SelectActivityTypeFragment
+import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.SelectActivityFragment
 import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragment
 
 class StartTrainingFragment : Fragment(R.layout.fragment_start_training) {
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -30,7 +32,7 @@ class StartTrainingFragment : Fragment(R.layout.fragment_start_training) {
 
     private fun initSelectActivityTypeButton() {
         requireView().findViewById<ImageView>(R.id.select_activity_type_button).setOnClickListener {
-            Navigator.navigateReplace(SelectActivityTypeFragment(), parentFragmentManager)
+            Navigator.navigateReplace(SelectActivityFragment(), parentFragmentManager)
         }
     }
 }

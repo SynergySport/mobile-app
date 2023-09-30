@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.presentation.fragments.selectActivityTypeFragment
+package com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment
 
 import android.os.Bundle
 import android.view.View
@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.domain.entity.Activity
-import com.synergysport.synergysportandroid.presentation.fragments.selectActivityTypeFragment.adapter.ActivityListAdapter
+import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter.ActivityListAdapter
 
-class SelectActivityTypeFragment : Fragment(R.layout.fragment_select_activity_type) {
+class SelectActivityFragment : Fragment(R.layout.fragment_select_activity) {
     private lateinit var activityListAdapter: ActivityListAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
