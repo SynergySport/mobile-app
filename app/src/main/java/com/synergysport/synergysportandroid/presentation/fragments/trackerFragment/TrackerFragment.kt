@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
@@ -23,8 +24,22 @@ class TrackerFragment : Fragment(R.layout.fragment_tracker) {
     }
 
     private fun initViews() {
+        initPauseButton()
+        initStopButton()
+    }
+
+    private fun initPauseButton() {
         requireView().findViewById<ImageView>(R.id.pause_button).setOnClickListener {
             viewModel.onClickPauseResume()
+        }
+    }
+
+    private fun initStopButton() {
+        with(requireView().findViewById<ImageView>(R.id.stop_button)) {
+            setOnClickListener {
+                viewModel.onClickStop()
+            }
+            visibility = View.GONE
         }
     }
 
@@ -36,6 +51,7 @@ class TrackerFragment : Fragment(R.layout.fragment_tracker) {
             onPausedLiveData.observe(viewLifecycleOwner) {
                 requireView().findViewById<ImageView>(R.id.pause_button)
                     .setImageResource(if (it) R.drawable.ic_play else R.drawable.ic_pause)
+                requireView().findViewById<ImageView>(R.id.stop_button).isVisible = it
             }
         }
     }
