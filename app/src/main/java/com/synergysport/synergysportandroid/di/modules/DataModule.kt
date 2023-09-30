@@ -18,7 +18,7 @@ class DataModule {
     @Provides
     @Singleton
     fun provideRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.1.45:8000/")
+        .baseUrl("http://194.67.91.216:8000/")
         .client(provideHttpClient())
         .addConverterFactory(GsonConverterFactory.create(Gson()))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

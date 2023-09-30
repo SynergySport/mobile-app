@@ -10,7 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
-import com.synergysport.synergysportandroid.presentation.fragments.startTrainingFragment.StartTrainingFragment
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.common.PermissionsController
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
@@ -18,7 +17,7 @@ import com.synergysport.synergysportandroid.presentation.fragments.achievementsF
 import com.synergysport.synergysportandroid.presentation.fragments.eventsFragment.EventsFragment
 import com.synergysport.synergysportandroid.presentation.fragments.firstStartFragment.FirstStartFragment
 import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragment
-import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragment
+import com.synergysport.synergysportandroid.presentation.fragments.startTrainingFragment.StartTrainingFragment
 import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.TrainingsFragment
 import javax.inject.Inject
 
@@ -70,7 +69,7 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
                 }
 
                 R.id.nav_start_training -> {
-                    Navigator.navigateReplace(TrackerFragment(), supportFragmentManager)
+                    Navigator.navigateReplace(StartTrainingFragment(), supportFragmentManager)
                 }
 
                 R.id.nav_my_trainings -> {

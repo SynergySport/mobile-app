@@ -7,7 +7,7 @@
     tools:context=".presentation.fragments.startTrainingFragment.StartTrainingFragment">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/start_tracker_button"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_margin="40dp"
@@ -31,7 +31,7 @@
         android:src="@drawable/ic_run"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintEnd_toStartOf="@+id/start_tracker_button"
         android:importantForAccessibility="no" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
