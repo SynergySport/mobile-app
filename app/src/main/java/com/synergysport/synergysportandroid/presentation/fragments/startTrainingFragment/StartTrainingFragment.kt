@@ -12,8 +12,6 @@ import com.synergysport.synergysportandroid.presentation.fragments.trackerFragme
 
 class StartTrainingFragment : Fragment(R.layout.fragment_start_training) {
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
