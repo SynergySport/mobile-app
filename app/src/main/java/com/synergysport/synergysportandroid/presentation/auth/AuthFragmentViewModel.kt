@@ -1,6 +1,5 @@
 package com.synergysport.synergysportandroid.presentation.auth
 
-import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

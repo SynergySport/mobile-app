@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.synergysport.synergysportandroid.di.AppViewModelFactory
 import com.synergysport.synergysportandroid.di.ViewModelKey
 import com.synergysport.synergysportandroid.presentation.auth.AuthFragmentViewModel
+import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter.SelectActivityViewModel
 import com.synergysport.synergysportandroid.presentation.mainActivity.MainActivityViewModel
 import dagger.Binds
 import dagger.Module
@@ -25,5 +26,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(MainActivityViewModel::class)
     internal abstract fun bindMainActivityViewModel(viewModel: MainActivityViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(SelectActivityViewModel::class)
+    internal abstract fun bindSelectActivityViewModel(viewModel: SelectActivityViewModel): ViewModel
 
 }

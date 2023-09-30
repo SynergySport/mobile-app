@@ -1,6 +1,7 @@
 package com.synergysport.synergysportandroid.di.modules
 
 import com.google.gson.Gson
+import com.synergysport.synergysportandroid.data.api.ActivitiesApi
 import com.synergysport.synergysportandroid.data.api.AuthApi
 import dagger.Module
 import dagger.Provides
@@ -26,11 +27,14 @@ class NetworkModule {
 
     private fun provideHttpClient() = OkHttpClient.Builder()
         .connectTimeout(20, TimeUnit.SECONDS)
-        .readTimeout(1, TimeUnit.MINUTES)
-        .writeTimeout(1, TimeUnit.MINUTES)
+        .readTimeout(20, TimeUnit.SECONDS)
+        .writeTimeout(20, TimeUnit.SECONDS)
         .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         .build()
 
     @Provides
     fun provideAuthApi(retrofit: Retrofit): AuthApi = retrofit.create(AuthApi::class.java)
+
+    @Provides
+    fun provideActivitiesApi(retrofit: Retrofit): ActivitiesApi = retrofit.create(ActivitiesApi::class.java)
 }
