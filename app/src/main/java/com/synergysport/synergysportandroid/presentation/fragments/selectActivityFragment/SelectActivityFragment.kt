@@ -9,14 +9,14 @@ import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.presentation.common.Navigator
 import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter.ActivityListAdapter
-import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter.SelectActivityViewModel
+import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter.SelectActivityFragmentViewModel
 import javax.inject.Inject
 
 class SelectActivityFragment : Fragment(R.layout.fragment_select_activity) {
     private lateinit var activityListAdapter: ActivityListAdapter
 
     @Inject
-    lateinit var viewModel: SelectActivityViewModel
+    lateinit var viewModel: SelectActivityFragmentViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

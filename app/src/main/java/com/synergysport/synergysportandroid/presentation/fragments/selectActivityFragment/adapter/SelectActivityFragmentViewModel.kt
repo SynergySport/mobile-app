@@ -11,7 +11,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class SelectActivityViewModel @Inject constructor(
+class SelectActivityFragmentViewModel @Inject constructor(
     private val getActivitiesUseCase: GetActivitiesUseCase,
     private val selectedActivityItemUseCase: SaveSelectedActivityItemUseCase
 ) : ViewModel() {
