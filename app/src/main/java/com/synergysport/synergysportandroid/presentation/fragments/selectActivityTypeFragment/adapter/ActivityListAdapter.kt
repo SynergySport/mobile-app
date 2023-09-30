@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.presentation.fragments.selectActivityTypeFragment
+package com.synergysport.synergysportandroid.presentation.fragments.selectActivityTypeFragment.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

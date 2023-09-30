@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.domain.entity.Activity
+import com.synergysport.synergysportandroid.presentation.fragments.selectActivityTypeFragment.adapter.ActivityListAdapter
 
 class SelectActivityTypeFragment : Fragment(R.layout.fragment_select_activity_type) {
     private lateinit var activityListAdapter: ActivityListAdapter
