@@ -15,4 +15,11 @@ interface ActivityEntityDao {
 
     @Query("SELECT * FROM activityentity")
     fun getAll(): Single<List<ActivityEntity>>
+
+    @Query("SELECT * FROM activityentity where id = :id")
+    fun getById(id: Int): Single<ActivityEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertAll(activities: List<ActivityEntity>): Completable
+
 }

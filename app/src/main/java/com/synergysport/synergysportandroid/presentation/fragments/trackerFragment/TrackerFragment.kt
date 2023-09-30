@@ -69,6 +69,9 @@ class TrackerFragment : Fragment() {
             closeScreenLiveData.observe(viewLifecycleOwner) {
                 Navigator.closeFragment(parentFragmentManager)
             }
+            setSelectedActivityLiveData.observe(viewLifecycleOwner) {
+                binding.secondMetricTitleTv.text = it.unitLabel
+            }
         }
     }
 

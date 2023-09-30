@@ -10,4 +10,6 @@ class GetActivitiesUseCase @Inject constructor(
         activitiesRepository.getAllActivities()
 
     fun getFavoriteActivities() = activitiesRepository.getFavoriteActivities()
+
+    fun getSelectedActivity() = activitiesRepository.getSelectedActivity()
 }

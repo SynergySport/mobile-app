@@ -5,5 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class ActivityEntity(
-    @PrimaryKey val id: Int
+    @PrimaryKey val id: Int,
+    val name: String,
+    val unitLabel: String
 )

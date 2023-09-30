@@ -3,7 +3,9 @@ package com.synergysport.synergysportandroid.presentation.fragments.trackerFragm
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.synergysport.synergysportandroid.domain.entity.ActivityItem
 import com.synergysport.synergysportandroid.domain.entity.MetricData
+import com.synergysport.synergysportandroid.domain.useCase.GetActivitiesUseCase
 import com.synergysport.synergysportandroid.domain.useCase.SendMetricsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -12,7 +14,8 @@ import javax.inject.Inject
 
 class TrackerFragmentViewModel @Inject constructor(
     private val stepTracker: StepTracker,
-    private val sendMetricsUseCase: SendMetricsUseCase
+    private val sendMetricsUseCase: SendMetricsUseCase,
+    private val getActivitiesUseCase: GetActivitiesUseCase
 ) : ViewModel() {
 
     private val _stepsCountLiveData = MutableLiveData<Int>()
@@ -27,6 +30,10 @@ class TrackerFragmentViewModel @Inject constructor(
     val closeScreenLiveData: LiveData<Unit>
         get() = _closeScreenLiveData
 
+    private val _setSelectedActivityLiveData = MutableLiveData<ActivityItem>()
+    val setSelectedActivityLiveData: LiveData<ActivityItem>
+        get() = _setSelectedActivityLiveData
+
     private val disposables = CompositeDisposable()
 
     fun init() {
@@ -34,6 +41,7 @@ class TrackerFragmentViewModel @Inject constructor(
         disposables.add(stepTracker.listen().subscribe {
             _stepsCountLiveData.value = it
         })
+        getActivity()
     }
 
     fun onClickStop() {
@@ -62,6 +70,17 @@ class TrackerFragmentViewModel @Inject constructor(
             stepTracker.resume()
             _onPausedLiveData.value = false
         }
+    }
+
+    fun getActivity() {
+        disposables.add(
+            getActivitiesUseCase.getSelectedActivity().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    _setSelectedActivityLiveData.value = it
+                }, {
+                    it.printStackTrace()
+                })
+        )
     }
 
     override fun onCleared() {
