@@ -8,4 +8,5 @@ interface StepTracker {
     fun pause()
     fun resume()
     fun listen(): Subject<Int>
+    fun isRunning(): Boolean
 }

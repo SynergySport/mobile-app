@@ -2,6 +2,7 @@ package com.synergysport.synergysportandroid.presentation.fragments.trackerFragm
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.synergysport.synergysportandroid.R
@@ -21,11 +22,21 @@ class TrackerFragment : Fragment(R.layout.fragment_tracker) {
         viewModel.init()
     }
 
-    private fun initViews() {}
+    private fun initViews() {
+        requireView().findViewById<ImageView>(R.id.pause_button).setOnClickListener {
+            viewModel.onClickPauseResume()
+        }
+    }
 
     private fun bindViewModel() {
-        viewModel.stepsCountLiveData.observe(viewLifecycleOwner) {
-            requireView().findViewById<TextView>(R.id.current_metric_value).text = it.toString()
+        with(viewModel) {
+            stepsCountLiveData.observe(viewLifecycleOwner) {
+                requireView().findViewById<TextView>(R.id.current_metric_value).text = it.toString()
+            }
+            onPausedLiveData.observe(viewLifecycleOwner) {
+                requireView().findViewById<ImageView>(R.id.pause_button)
+                    .setImageResource(if (it) R.drawable.ic_play else R.drawable.ic_pause)
+            }
         }
     }
 

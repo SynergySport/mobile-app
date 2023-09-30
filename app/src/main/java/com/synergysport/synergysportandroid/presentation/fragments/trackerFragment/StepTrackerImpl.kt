@@ -21,7 +21,9 @@ class StepTrackerImpl @Inject constructor(
 
     private var isRunning = false
 
-    private var previousStepsCount = 0
+    private var previousStepsCount: Int? = null
+    private var lastPausedStepsCount: Int? = null
+    private var lastSavedBeforePauseCount = 0
 
     override fun start() {
         val stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
@@ -29,36 +31,42 @@ class StepTrackerImpl @Inject constructor(
             showError()
             return
         }
+        isRunning = true
         sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI)
     }
 
     override fun stop() {
-        sensorManager.unregisterListener(
-            this,
-            sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-        )
+
     }
 
     override fun pause() {
-        sensorManager.unregisterListener(
-            this,
-            sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
-        )
+        isRunning = false
     }
 
     override fun resume() {
-        start()
+        isRunning = true
     }
 
     override fun listen(): Subject<Int> = stepsSubject
 
+    override fun isRunning() = isRunning
+
     override fun onSensorChanged(event: SensorEvent) {
         val currentStepsCount = event.values[0].toInt()
         if (!isRunning) {
-            isRunning = true
+            lastPausedStepsCount = currentStepsCount
+            return
+        }
+        if (previousStepsCount == null) {
             previousStepsCount = currentStepsCount
         }
-        stepsSubject.onNext(currentStepsCount - previousStepsCount)
+        if (lastPausedStepsCount != null) {
+            lastSavedBeforePauseCount = lastSavedBeforePauseCount + currentStepsCount - lastPausedStepsCount!!
+            stepsSubject.onNext(lastSavedBeforePauseCount)
+            return
+        }
+        lastSavedBeforePauseCount = currentStepsCount - previousStepsCount!!
+        stepsSubject.onNext(lastSavedBeforePauseCount)
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
