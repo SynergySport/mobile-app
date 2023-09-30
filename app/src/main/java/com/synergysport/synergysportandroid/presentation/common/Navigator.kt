@@ -11,4 +11,16 @@ object Navigator {
             .replace(R.id.fragment_container, fragment)
             .commit()
     }
+
+    fun navigateReplaceSaveStack(fragment: Fragment, fragmentManager: FragmentManager) {
+        fragmentManager
+            .beginTransaction()
+            .addToBackStack(null)
+            .replace(R.id.fragment_container, fragment)
+            .commit()
+    }
+
+    fun closeFragment(fragmentManager: FragmentManager) {
+        fragmentManager.popBackStack()
+    }
 }

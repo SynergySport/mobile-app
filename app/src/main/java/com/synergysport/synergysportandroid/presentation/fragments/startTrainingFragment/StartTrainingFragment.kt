@@ -32,7 +32,7 @@ class StartTrainingFragment : Fragment(R.layout.fragment_start_training) {
 
     private fun initSelectActivityTypeButton() {
         requireView().findViewById<ImageView>(R.id.select_activity_type_button).setOnClickListener {
-            Navigator.navigateReplace(SelectActivityFragment(), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(SelectActivityFragment(), parentFragmentManager)
         }
     }
 }

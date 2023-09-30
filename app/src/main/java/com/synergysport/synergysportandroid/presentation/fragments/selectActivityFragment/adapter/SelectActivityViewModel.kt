@@ -5,21 +5,25 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.synergysport.synergysportandroid.domain.entity.ActivityItem
 import com.synergysport.synergysportandroid.domain.useCase.GetActivitiesUseCase
+import com.synergysport.synergysportandroid.domain.useCase.SaveSelectedActivityItemUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class SelectActivityViewModel @Inject constructor(
-    private val getActivitiesUseCase: GetActivitiesUseCase
+    private val getActivitiesUseCase: GetActivitiesUseCase,
+    private val selectedActivityItemUseCase: SaveSelectedActivityItemUseCase
 ) : ViewModel() {
     private val _allActivitiesLiveData = MutableLiveData<List<ActivityItem>>()
     val allActivitiesLiveData: LiveData<List<ActivityItem>>
         get() = _allActivitiesLiveData
 
     private val _selectedActivityItemLiveData = MutableLiveData<ActivityItem>()
-    val selectedActivityItemLiveData: LiveData<ActivityItem>
-        get() = _selectedActivityItemLiveData
+
+    private val _shouldCloseScreenLiveData = MutableLiveData<Unit>()
+    val shouldCloseScreenLiveData: LiveData<Unit>
+        get() = _shouldCloseScreenLiveData
 
     private val disposables = CompositeDisposable()
 
@@ -41,7 +45,20 @@ class SelectActivityViewModel @Inject constructor(
     fun onClickActivityItem(item: ActivityItem) {
         _selectedActivityItemLiveData.value = item.copy(isSelected = true)
         _allActivitiesLiveData.value =
-            _allActivitiesLiveData.value?.map { if (it.id == item.id) it.copy(isSelected = true) else it.copy(isSelected = false) }
+            _allActivitiesLiveData.value?.map {
+                if (it.id == item.id) it.copy(isSelected = true) else it.copy(
+                    isSelected = false
+                )
+            }
+    }
+
+    fun saveSelectedActivity() {
+        _selectedActivityItemLiveData.value?.let {
+            selectedActivityItemUseCase.saveSelectedActivity(
+                it
+            )
+        }
+        _shouldCloseScreenLiveData.value = Unit
     }
 
     override fun onCleared() {
