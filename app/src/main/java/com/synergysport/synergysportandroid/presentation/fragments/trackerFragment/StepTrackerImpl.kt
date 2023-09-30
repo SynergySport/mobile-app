@@ -36,7 +36,7 @@ class StepTrackerImpl @Inject constructor(
     }
 
     override fun stop() {
-
+        stepsSubject.onComplete()
     }
 
     override fun pause() {
@@ -61,7 +61,8 @@ class StepTrackerImpl @Inject constructor(
             previousStepsCount = currentStepsCount
         }
         if (lastPausedStepsCount != null) {
-            lastSavedBeforePauseCount = lastSavedBeforePauseCount + currentStepsCount - lastPausedStepsCount!!
+            lastSavedBeforePauseCount =
+                lastSavedBeforePauseCount + currentStepsCount - lastPausedStepsCount!!
             stepsSubject.onNext(lastSavedBeforePauseCount)
             return
         }

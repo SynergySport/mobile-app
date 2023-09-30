@@ -8,6 +8,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
+import com.synergysport.synergysportandroid.presentation.common.Navigator
 import javax.inject.Inject
 
 class TrackerFragment : Fragment(R.layout.fragment_tracker) {
@@ -39,7 +40,7 @@ class TrackerFragment : Fragment(R.layout.fragment_tracker) {
             setOnClickListener {
                 viewModel.onClickStop()
             }
-            visibility = View.GONE
+            isVisible = false
         }
     }
 
@@ -52,6 +53,9 @@ class TrackerFragment : Fragment(R.layout.fragment_tracker) {
                 requireView().findViewById<ImageView>(R.id.pause_button)
                     .setImageResource(if (it) R.drawable.ic_play else R.drawable.ic_pause)
                 requireView().findViewById<ImageView>(R.id.stop_button).isVisible = it
+            }
+            closeScreenLiveData.observe(viewLifecycleOwner){
+                Navigator.closeFragment(parentFragmentManager)
             }
         }
     }

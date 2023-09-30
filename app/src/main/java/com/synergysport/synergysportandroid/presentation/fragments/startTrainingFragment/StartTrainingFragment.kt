@@ -24,7 +24,7 @@ class StartTrainingFragment : Fragment(R.layout.fragment_start_training) {
 
     private fun initStartTrackerButton() {
         requireView().findViewById<TextView>(R.id.start_tracker_button).setOnClickListener {
-            Navigator.navigateReplace(TrackerFragment(), parentFragmentManager)
+            Navigator.navigateReplaceSaveStack(TrackerFragment(), parentFragmentManager)
         }
     }
 

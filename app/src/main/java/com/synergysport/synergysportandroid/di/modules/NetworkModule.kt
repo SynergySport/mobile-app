@@ -3,6 +3,7 @@ package com.synergysport.synergysportandroid.di.modules
 import com.google.gson.Gson
 import com.synergysport.synergysportandroid.data.network.api.ActivitiesApi
 import com.synergysport.synergysportandroid.data.network.api.AuthApi
+import com.synergysport.synergysportandroid.data.network.api.MetricsApi
 import com.synergysport.synergysportandroid.domain.handler.TokenDataHandler
 import dagger.Module
 import dagger.Provides
@@ -42,6 +43,10 @@ class NetworkModule {
     @Provides
     fun provideActivitiesApi(retrofit: Retrofit): ActivitiesApi =
         retrofit.create(ActivitiesApi::class.java)
+
+    @Provides
+    fun provideMetricsApi(retrofit: Retrofit): MetricsApi =
+        retrofit.create(MetricsApi::class.java)
 }
 
 private class AuthInterceptor(
@@ -51,7 +56,7 @@ private class AuthInterceptor(
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
         val requestBuilder = originalRequest.newBuilder()
-            .header("Authorization", tokenDataHandler.getToken().token)
+            .header("Authorization", "Token ${tokenDataHandler.getToken().token}")
             .method(originalRequest.method, originalRequest.body)
 
         val modifiedRequest = requestBuilder.build()
