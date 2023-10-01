@@ -11,6 +11,7 @@ import com.synergysport.synergysportandroid.presentation.auth.AuthFragment
 import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragment
 import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.SelectActivityFragment
 import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragment
+import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.TrainingsFragment
 import com.synergysport.synergysportandroid.presentation.mainActivity.MainActivity
 import dagger.Component
 import javax.inject.Singleton
@@ -38,5 +39,7 @@ interface AppComponent {
     fun inject(trackerFragment: TrackerFragment)
 
     fun inject(profileFragment: ProfileFragment)
+
+    fun inject(trainingsFragment: TrainingsFragment)
 
 }

@@ -8,6 +8,7 @@ import com.synergysport.synergysportandroid.presentation.auth.AuthFragmentViewMo
 import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragmentViewModel
 import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter.SelectActivityFragmentViewModel
 import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragmentViewModel
+import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.TrainingsFragmentViewModel
 import com.synergysport.synergysportandroid.presentation.mainActivity.MainActivityViewModel
 import dagger.Binds
 import dagger.Module
@@ -43,5 +44,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(ProfileFragmentViewModel::class)
     internal abstract fun bindProfileFragmentViewModel(viewModel: ProfileFragmentViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(TrainingsFragmentViewModel::class)
+    internal abstract fun bindTrainingsFragmentViewModel(viewModel: TrainingsFragmentViewModel): ViewModel
 
 }
