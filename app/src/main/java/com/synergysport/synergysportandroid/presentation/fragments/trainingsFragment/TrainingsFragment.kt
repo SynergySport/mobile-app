@@ -5,14 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.RecyclerView
 import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
-import com.synergysport.synergysportandroid.databinding.FragmentAuthBinding
 import com.synergysport.synergysportandroid.databinding.FragmentTrainingsBinding
-import com.synergysport.synergysportandroid.domain.entity.Training
-import com.synergysport.synergysportandroid.presentation.auth.AuthFragmentViewModel
-import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.adapter.TrainingsListAdapter
 import javax.inject.Inject
 

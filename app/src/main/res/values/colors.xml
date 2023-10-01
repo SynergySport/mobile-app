@@ -5,4 +5,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="secondary_color">#00A8E8</color>
     <color name="secondary_color_alpha">#2000A8E8</color>
+    <color name="grey">#20DCDCDC</color>
 </resources>

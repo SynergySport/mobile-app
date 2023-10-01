@@ -1,5 +1,6 @@
 package com.synergysport.synergysportandroid.presentation.fragments.eventsFragment
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.synergysport.synergysportandroid.domain.entity.EventItem
@@ -14,7 +15,8 @@ class EventsFragmentViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _eventsLiveData = MutableLiveData<List<EventItem>>()
-    val eventsLiveData = MutableLiveData<List<EventItem>>()
+    val eventsLiveData: LiveData<List<EventItem>>
+        get() = _eventsLiveData
 
     private val disposables = CompositeDisposable()
 

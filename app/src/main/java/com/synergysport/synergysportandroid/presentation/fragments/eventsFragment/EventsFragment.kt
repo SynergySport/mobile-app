@@ -9,12 +9,16 @@ import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.databinding.FragmentEventsBinding
 import com.synergysport.synergysportandroid.databinding.FragmentProfileBinding
+import com.synergysport.synergysportandroid.presentation.fragments.eventsFragment.adapter.EventsListAdapter
 import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragmentViewModel
+import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.adapter.TrainingsListAdapter
 import javax.inject.Inject
 
 class EventsFragment : Fragment() {
 
     private lateinit var binding: FragmentEventsBinding
+
+    private lateinit var eventsAdapter: EventsListAdapter
 
     @Inject
     lateinit var viewModel: EventsFragmentViewModel
@@ -35,12 +39,26 @@ class EventsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initViews()
         bindViewModel()
         viewModel.init()
     }
 
-    private fun bindViewModel() {
+    private fun initViews() {
+        initRecyclerView()
+    }
 
+    private fun initRecyclerView() {
+        eventsAdapter = EventsListAdapter()
+        with(binding.eventsRv) {
+            adapter = eventsAdapter
+        }
+    }
+
+    private fun bindViewModel() {
+        viewModel.eventsLiveData.observe(viewLifecycleOwner) {
+            eventsAdapter.submitList(it)
+        }
     }
 
 }
