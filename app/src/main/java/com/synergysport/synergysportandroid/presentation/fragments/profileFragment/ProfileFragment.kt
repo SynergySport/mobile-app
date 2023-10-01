@@ -33,4 +33,16 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onCreate(savedInstanceState)
         (requireActivity().application as SynergySportApp).appComponent.inject(this)
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        bindViewModel()
+        viewModel.init()
+    }
+
+    private fun bindViewModel() {
+        viewModel.profileInfoLiveData.observe(viewLifecycleOwner) {
+
+        }
+    }
 }
