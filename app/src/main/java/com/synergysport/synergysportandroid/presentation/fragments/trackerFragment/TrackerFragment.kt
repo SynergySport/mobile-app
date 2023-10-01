@@ -81,6 +81,9 @@ class TrackerFragment : Fragment() {
             currentMetricLiveData.observe(viewLifecycleOwner) {
                 binding.currentMetricValue.text = it
             }
+            currentUnitLiveData.observe(viewLifecycleOwner) {
+                binding.unitNameTv.text = it
+            }
         }
     }
 

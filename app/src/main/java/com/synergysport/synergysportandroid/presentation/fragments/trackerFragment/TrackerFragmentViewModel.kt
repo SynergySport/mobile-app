@@ -47,6 +47,11 @@ class TrackerFragmentViewModel @Inject constructor(
     val currentMetricLiveData: LiveData<String>
         get() = _currentMetricLiveData
 
+    private val _currentUnitLiveData = MutableLiveData("")
+    val currentUnitLiveData: LiveData<String>
+        get() = _currentUnitLiveData
+
+
     private val disposables = CompositeDisposable()
 
     fun init() {
@@ -106,6 +111,7 @@ class TrackerFragmentViewModel @Inject constructor(
     }
 
     private fun proceedActivity(activityItem: ActivityItem) {
+        _currentUnitLiveData.value = activityItem.unit
         when (activityItem.unit) {
             UNIT_STEP -> {
                 timerTracker.startTimer()
@@ -130,7 +136,7 @@ class TrackerFragmentViewModel @Inject constructor(
                     _scoresLiveData.value =
                         String.format("%.3f", activityItem.costUnit * (it * 0.0007))
                             .replace(",", ".").toDouble()
-                    _currentMetricLiveData.value = (it * 0.0007).toString()
+                    _currentMetricLiveData.value = String.format("%.3f", (it * 0.0007))
                 })
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
@@ -142,7 +148,8 @@ class TrackerFragmentViewModel @Inject constructor(
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
                     val value = activityItem.costUnit * (it / 1000 / 60.0)
-                    _currentMetricLiveData.value = (it / 1000).toString()
+                    _currentMetricLiveData.value =
+                        String.format("%.3f", (it / 1000 / 60.0))
                     _scoresLiveData.value =
                         String.format("%.3f", value).replace(",", ".").toDouble()
                 })
