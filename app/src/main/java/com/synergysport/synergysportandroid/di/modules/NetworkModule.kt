@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.synergysport.synergysportandroid.data.network.api.ActivitiesApi
 import com.synergysport.synergysportandroid.data.network.api.AuthApi
 import com.synergysport.synergysportandroid.data.network.api.MetricsApi
+import com.synergysport.synergysportandroid.data.network.api.ProfileApi
 import com.synergysport.synergysportandroid.domain.handler.TokenDataHandler
 import dagger.Module
 import dagger.Provides
@@ -14,6 +15,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -83,6 +85,10 @@ class NetworkModule {
     @Provides
     fun provideMetricsApi(retrofit: Retrofit): MetricsApi =
         retrofit.create(MetricsApi::class.java)
+
+    @Provides
+    fun provideProfileApi(retrofit: Retrofit): ProfileApi =
+        retrofit.create(ProfileApi::class.java)
 }
 
 private class AuthInterceptor(

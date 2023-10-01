@@ -42,7 +42,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun bindViewModel() {
         viewModel.profileInfoLiveData.observe(viewLifecycleOwner) {
-
+            with(binding) {
+                name.text = it.fullName
+                telegram.text = it.telegram
+                roleStrTv.text = it.roleStr
+                companyNameTv.text = it.company
+                mailTv.text = it.email
+            }
         }
     }
 }

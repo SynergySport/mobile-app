@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".presentation.fragments.profileFragment.ProfileFragment">
 
     <TextView
+        android:id="@+id/name"
+        style="@style/TitleTextStyleBlack"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/profile_screen_title" />
+        android:layout_height="wrap_content"
+        tools:text="Анфиса Питонова" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/telegram"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="telegram" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TitleTextStyleBlack"
+        android:text="Должность"/>
+
+    <TextView
+        android:id="@+id/role_str_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Директор"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TitleTextStyleBlack"
+        android:text="Организация"/>
+
+    <TextView
+        android:id="@+id/company_name_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Синергия спорта"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/TitleTextStyleBlack"
+        android:text="Почта"/>
+
+    <TextView
+        android:id="@+id/mail_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="aaa@bbb"/>
+
+</LinearLayout>

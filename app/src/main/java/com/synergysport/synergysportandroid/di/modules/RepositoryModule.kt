@@ -3,9 +3,11 @@ package com.synergysport.synergysportandroid.di.modules
 import com.synergysport.synergysportandroid.data.repository.ActivitiesRepositoryImpl
 import com.synergysport.synergysportandroid.data.repository.AuthRepositoryImpl
 import com.synergysport.synergysportandroid.data.repository.MetricRepositoryImpl
+import com.synergysport.synergysportandroid.data.repository.ProfileRepositoryImpl
 import com.synergysport.synergysportandroid.domain.repository.ActivitiesRepository
 import com.synergysport.synergysportandroid.domain.repository.AuthRepository
 import com.synergysport.synergysportandroid.domain.repository.MetricsRepository
+import com.synergysport.synergysportandroid.domain.repository.ProfileRepository
 import dagger.Binds
 import dagger.Module
 
@@ -19,4 +21,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideMetricsRepository(repository: MetricRepositoryImpl): MetricsRepository
+
+    @Binds
+    abstract fun provideProfileRepository(profileRepository: ProfileRepositoryImpl): ProfileRepository
 }
