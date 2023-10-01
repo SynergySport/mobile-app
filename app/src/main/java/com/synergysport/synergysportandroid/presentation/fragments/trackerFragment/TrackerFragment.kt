@@ -64,7 +64,7 @@ class TrackerFragment : Fragment() {
             timeCountLiveData.observe(viewLifecycleOwner) {
                 binding.timeValueTv.text = it.toString()
             }
-            scoresLiveData.observe(viewLifecycleOwner){
+            scoresLiveData.observe(viewLifecycleOwner) {
                 binding.currentUnitsTv.text = it.toString()
             }
             onPausedLiveData.observe(viewLifecycleOwner) {
@@ -77,6 +77,9 @@ class TrackerFragment : Fragment() {
             }
             setSelectedActivityLiveData.observe(viewLifecycleOwner) {
                 binding.secondMetricTitleTv.text = it.unitLabel
+            }
+            currentMetricLiveData.observe(viewLifecycleOwner) {
+                binding.currentMetricValue.text = it
             }
         }
     }

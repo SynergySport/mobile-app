@@ -39,9 +39,13 @@ class TrackerFragmentViewModel @Inject constructor(
     val setSelectedActivityLiveData: LiveData<ActivityItem>
         get() = _setSelectedActivityLiveData
 
-    private val _scoresLiveData = MutableLiveData<Double>()
+    private val _scoresLiveData = MutableLiveData(0.0)
     val scoresLiveData: LiveData<Double>
         get() = _scoresLiveData
+
+    private val _currentMetricLiveData = MutableLiveData("0")
+    val currentMetricLiveData: LiveData<String>
+        get() = _currentMetricLiveData
 
     private val disposables = CompositeDisposable()
 
@@ -57,7 +61,7 @@ class TrackerFragmentViewModel @Inject constructor(
                     activityId = setSelectedActivityLiveData.value!!.id,
                     startDate = "2023-09-25T20:50:55Z",
                     endDate = "2023-09-25T20:50:55Z",
-                    countUnit = 10.0
+                    countUnit = _scoresLiveData.value!!
                 )
             ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
                 _closeScreenLiveData.value = Unit
@@ -108,9 +112,10 @@ class TrackerFragmentViewModel @Inject constructor(
                 stepTracker.start()
                 disposables.add(stepTracker.listen().subscribe {
                     _stepsCountLiveData.value = it
-                    _scoresLiveData.value =
-                        String.format("%.3f", activityItem.costUnit * it).replace(",", ".")
-                            .toDouble()
+                    val value = String.format("%.3f", activityItem.costUnit * it).replace(",", ".")
+                        .toDouble()
+                    _scoresLiveData.value = value
+                    _currentMetricLiveData.value = it.toString()
                 })
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
@@ -125,6 +130,7 @@ class TrackerFragmentViewModel @Inject constructor(
                     _scoresLiveData.value =
                         String.format("%.3f", activityItem.costUnit * (it * 0.0007))
                             .replace(",", ".").toDouble()
+                    _currentMetricLiveData.value = (it * 0.0007).toString()
                 })
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
@@ -136,6 +142,7 @@ class TrackerFragmentViewModel @Inject constructor(
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
                     val value = activityItem.costUnit * (it / 1000 / 60.0)
+                    _currentMetricLiveData.value = (it / 1000).toString()
                     _scoresLiveData.value =
                         String.format("%.3f", value).replace(",", ".").toDouble()
                 })
