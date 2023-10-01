@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.synergysport.synergysportandroid.di.AppViewModelFactory
 import com.synergysport.synergysportandroid.di.ViewModelKey
 import com.synergysport.synergysportandroid.presentation.auth.AuthFragmentViewModel
+import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragmentViewModel
 import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.adapter.SelectActivityFragmentViewModel
 import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragmentViewModel
 import com.synergysport.synergysportandroid.presentation.mainActivity.MainActivityViewModel
@@ -37,5 +38,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(TrackerFragmentViewModel::class)
     internal abstract fun bindTrackerFragmentViewModel(viewModel: TrackerFragmentViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileFragmentViewModel::class)
+    internal abstract fun bindProfileFragmentViewModel(viewModel: ProfileFragmentViewModel): ViewModel
 
 }

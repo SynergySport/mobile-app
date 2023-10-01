@@ -8,6 +8,7 @@ import com.synergysport.synergysportandroid.di.modules.PermissionsControllerModu
 import com.synergysport.synergysportandroid.di.modules.RepositoryModule
 import com.synergysport.synergysportandroid.di.modules.ViewModelModule
 import com.synergysport.synergysportandroid.presentation.auth.AuthFragment
+import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragment
 import com.synergysport.synergysportandroid.presentation.fragments.selectActivityFragment.SelectActivityFragment
 import com.synergysport.synergysportandroid.presentation.fragments.trackerFragment.TrackerFragment
 import com.synergysport.synergysportandroid.presentation.mainActivity.MainActivity
@@ -35,5 +36,7 @@ interface AppComponent {
     fun inject(selectActivityFragment: SelectActivityFragment)
 
     fun inject(trackerFragment: TrackerFragment)
+
+    fun inject(profileFragment: ProfileFragment)
 
 }
