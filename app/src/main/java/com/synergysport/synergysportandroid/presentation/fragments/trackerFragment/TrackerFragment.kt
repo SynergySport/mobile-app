@@ -61,6 +61,9 @@ class TrackerFragment : Fragment() {
             stepsCountLiveData.observe(viewLifecycleOwner) {
                 binding.currentMetricValue.text = it.toString()
             }
+            timeCountLiveData.observe(viewLifecycleOwner) {
+                binding.timeValueTv.text = it.toString()
+            }
             onPausedLiveData.observe(viewLifecycleOwner) {
                 binding.pauseButton
                     .setImageResource(if (it) R.drawable.ic_play else R.drawable.ic_pause)

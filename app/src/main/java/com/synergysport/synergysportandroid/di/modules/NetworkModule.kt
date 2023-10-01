@@ -15,6 +15,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -22,9 +23,29 @@ class NetworkModule {
 
     @Provides
     @Singleton
+    fun provideRetrofitDefault(tokenDataHandler: TokenDataHandler): Retrofit = Retrofit.Builder()
+        .baseUrl("http://194.67.91.216:8000/")
+        .client(provideHttpClient(tokenDataHandler))
+        .addConverterFactory(GsonConverterFactory.create(Gson()))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+
+    @Provides
+    @Singleton
+    @Named("AuthInterceptor")
     fun provideRetrofit(tokenDataHandler: TokenDataHandler): Retrofit = Retrofit.Builder()
         .baseUrl("http://194.67.91.216:8000/")
         .client(provideHttpClient(tokenDataHandler))
+        .addConverterFactory(GsonConverterFactory.create(Gson()))
+        .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+        .build()
+
+    @Provides
+    @Singleton
+    @Named("NoAuthInterceptor")
+    fun provideRetrofitNoAuth(): Retrofit = Retrofit.Builder()
+        .baseUrl("http://194.67.91.216:8000/")
+        .client(provideHttpClientNoAuth())
         .addConverterFactory(GsonConverterFactory.create(Gson()))
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .build()
@@ -37,8 +58,23 @@ class NetworkModule {
         .addInterceptor(AuthInterceptor(tokenDataHandler))
         .build()
 
+    private fun provideHttpClientNoAuth() = OkHttpClient.Builder()
+        .connectTimeout(20, TimeUnit.SECONDS)
+        .readTimeout(20, TimeUnit.SECONDS)
+        .writeTimeout(20, TimeUnit.SECONDS)
+        .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+        .build()
+
     @Provides
-    fun provideAuthApi(retrofit: Retrofit): AuthApi = retrofit.create(AuthApi::class.java)
+    @Named("AuthInterceptor")
+    fun provideAuthApi(@Named("AuthInterceptor") retrofit: Retrofit): AuthApi =
+        retrofit.create(AuthApi::class.java)
+
+    @Provides
+    @Named("NoAuthInterceptor")
+    fun provideNoAuthApi(@Named("NoAuthInterceptor") retrofit: Retrofit): AuthApi =
+        retrofit.create(AuthApi::class.java)
+
 
     @Provides
     fun provideActivitiesApi(retrofit: Retrofit): ActivitiesApi =

@@ -14,6 +14,7 @@ import javax.inject.Inject
 
 class TrackerFragmentViewModel @Inject constructor(
     private val stepTracker: StepTracker,
+    private val timerTracker: TimerTracker,
     private val sendMetricsUseCase: SendMetricsUseCase,
     private val getActivitiesUseCase: GetActivitiesUseCase
 ) : ViewModel() {
@@ -22,7 +23,11 @@ class TrackerFragmentViewModel @Inject constructor(
     val stepsCountLiveData: LiveData<Int>
         get() = _stepsCountLiveData
 
-    private val _onPausedLiveData = MutableLiveData<Boolean>()
+    private val _timeCountLiveData = MutableLiveData<Long>()
+    val timeCountLiveData: LiveData<Long>
+        get() = _timeCountLiveData
+
+    private val _onPausedLiveData = MutableLiveData(false)
     val onPausedLiveData: LiveData<Boolean>
         get() = _onPausedLiveData
 
@@ -37,9 +42,6 @@ class TrackerFragmentViewModel @Inject constructor(
     private val disposables = CompositeDisposable()
 
     fun init() {
-        disposables.add(stepTracker.listen().subscribe {
-            _stepsCountLiveData.value = it
-        })
         getActivity()
     }
 
@@ -48,7 +50,7 @@ class TrackerFragmentViewModel @Inject constructor(
         disposables.add(
             sendMetricsUseCase.sendMetrics(
                 MetricData(
-                    activityId = 2,
+                    activityId = setSelectedActivityLiveData.value!!.id,
                     startDate = "2023-09-25T20:50:55Z",
                     endDate = "2023-09-25T20:50:55Z",
                     countUnit = 10.0
@@ -62,12 +64,24 @@ class TrackerFragmentViewModel @Inject constructor(
     }
 
     fun onClickPauseResume() {
+        pauseResumeStepTracker()
+        pauseResumeTimerTracker()
+        _onPausedLiveData.value = !_onPausedLiveData.value!!
+    }
+
+    private fun pauseResumeStepTracker() {
         if (stepTracker.isRunning()) {
             stepTracker.pause()
-            _onPausedLiveData.value = true
         } else {
             stepTracker.resume()
-            _onPausedLiveData.value = false
+        }
+    }
+
+    private fun pauseResumeTimerTracker() {
+        if (timerTracker.isRunning()) {
+            timerTracker.pause()
+        } else {
+            timerTracker.resume()
         }
     }
 
@@ -85,9 +99,34 @@ class TrackerFragmentViewModel @Inject constructor(
 
     private fun proceedActivity(activityItem: ActivityItem) {
         when (activityItem.unit) {
-            UNIT_STEP -> stepTracker.start()
-            UNIT_KM -> stepTracker.start()
-            UNIT_MIN -> stepTracker.start()
+            UNIT_STEP -> {
+                timerTracker.startTimer()
+                stepTracker.start()
+                disposables.add(stepTracker.listen().subscribe {
+                    _stepsCountLiveData.value = it
+                })
+                disposables.add(timerTracker.listen().subscribe {
+                    _timeCountLiveData.value = it
+                })
+            }
+
+            UNIT_KM -> {
+                stepTracker.start()
+                timerTracker.startTimer()
+                disposables.add(stepTracker.listen().subscribe {
+                    _stepsCountLiveData.value = it
+                })
+                disposables.add(timerTracker.listen().subscribe {
+                    _timeCountLiveData.value = it
+                })
+            }
+
+            UNIT_MIN -> {
+                timerTracker.startTimer()
+                disposables.add(timerTracker.listen().subscribe {
+                    _timeCountLiveData.value = it
+                })
+            }
         }
     }
 

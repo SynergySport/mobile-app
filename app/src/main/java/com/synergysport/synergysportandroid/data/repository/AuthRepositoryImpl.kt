@@ -7,8 +7,10 @@ import com.synergysport.synergysportandroid.domain.repository.AuthRepository
 import com.synergysport.synergysportandroid.domain.handler.TokenDataHandler
 import io.reactivex.Single
 import javax.inject.Inject
+import javax.inject.Named
 
 class AuthRepositoryImpl @Inject constructor(
+    @Named("NoAuthInterceptor")
     private val authApi: AuthApi,
     private val tokenDataHandler: TokenDataHandler
 ) : AuthRepository {
