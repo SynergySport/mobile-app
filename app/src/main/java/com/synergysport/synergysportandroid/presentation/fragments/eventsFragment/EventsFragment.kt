@@ -5,13 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.synergysport.synergysportandroid.R
 import com.synergysport.synergysportandroid.SynergySportApp
 import com.synergysport.synergysportandroid.databinding.FragmentEventsBinding
-import com.synergysport.synergysportandroid.databinding.FragmentProfileBinding
 import com.synergysport.synergysportandroid.presentation.fragments.eventsFragment.adapter.EventsListAdapter
-import com.synergysport.synergysportandroid.presentation.fragments.profileFragment.ProfileFragmentViewModel
-import com.synergysport.synergysportandroid.presentation.fragments.trainingsFragment.adapter.TrainingsListAdapter
 import javax.inject.Inject
 
 class EventsFragment : Fragment() {
@@ -50,6 +46,9 @@ class EventsFragment : Fragment() {
 
     private fun initRecyclerView() {
         eventsAdapter = EventsListAdapter()
+        eventsAdapter.registerAction = {
+            viewModel.onClickRegister(it)
+        }
         with(binding.eventsRv) {
             adapter = eventsAdapter
         }

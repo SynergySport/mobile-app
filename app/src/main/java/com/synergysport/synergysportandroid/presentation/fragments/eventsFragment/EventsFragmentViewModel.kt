@@ -24,10 +24,21 @@ class EventsFragmentViewModel @Inject constructor(
         disposables.add(
             eventsUseCase.getEvents().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe({
-                _eventsLiveData.value = it
-            }, {
-                it.printStackTrace()
-            })
+                    _eventsLiveData.value = it
+                }, {
+                    it.printStackTrace()
+                })
+        )
+    }
+
+    fun onClickRegister(id: Int) {
+        disposables.add(
+            eventsUseCase.registerToEvent(id).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    init()
+                }, {
+                    it.printStackTrace()
+                })
         )
     }
 
