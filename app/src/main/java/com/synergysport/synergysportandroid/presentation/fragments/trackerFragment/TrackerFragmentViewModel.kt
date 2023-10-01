@@ -12,6 +12,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import java.text.SimpleDateFormat
 import java.util.Calendar
+import java.util.Locale
 import javax.inject.Inject
 
 class TrackerFragmentViewModel @Inject constructor(
@@ -163,7 +164,7 @@ class TrackerFragmentViewModel @Inject constructor(
 
     private fun getCurrentDate(): String {
         val currentDateTime: Calendar = Calendar.getInstance()
-        val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.getDefault())
         return formatter.format(currentDateTime.time)
     }
 
