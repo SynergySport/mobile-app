@@ -8,6 +8,7 @@ data class ActivityDto(
     val id: Int,
     val title: String,
     val unit: String,
+    val cost_unit: Double,
     val unit_label: String
 ) {
     fun toActivityItem() = ActivityItem(
@@ -15,6 +16,7 @@ data class ActivityDto(
         name = title,
         unit = unit,
         unitLabel = unit_label,
+        costUnit = cost_unit,
         icon = R.drawable.ic_run,
     )
 
@@ -22,6 +24,7 @@ data class ActivityDto(
         id = id,
         name = title,
         unit = unit,
+        costUnit = cost_unit,
         unitLabel = unit_label
     )
 }

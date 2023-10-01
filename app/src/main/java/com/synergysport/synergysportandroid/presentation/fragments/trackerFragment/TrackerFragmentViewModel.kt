@@ -39,6 +39,10 @@ class TrackerFragmentViewModel @Inject constructor(
     val setSelectedActivityLiveData: LiveData<ActivityItem>
         get() = _setSelectedActivityLiveData
 
+    private val _scoresLiveData = MutableLiveData<Double>()
+    val scoresLiveData: LiveData<Double>
+        get() = _scoresLiveData
+
     private val disposables = CompositeDisposable()
 
     fun init() {
@@ -104,6 +108,9 @@ class TrackerFragmentViewModel @Inject constructor(
                 stepTracker.start()
                 disposables.add(stepTracker.listen().subscribe {
                     _stepsCountLiveData.value = it
+                    _scoresLiveData.value =
+                        String.format("%.3f", activityItem.costUnit * it).replace(",", ".")
+                            .toDouble()
                 })
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
@@ -115,6 +122,9 @@ class TrackerFragmentViewModel @Inject constructor(
                 timerTracker.startTimer()
                 disposables.add(stepTracker.listen().subscribe {
                     _stepsCountLiveData.value = it
+                    _scoresLiveData.value =
+                        String.format("%.3f", activityItem.costUnit * (it * 0.0007))
+                            .replace(",", ".").toDouble()
                 })
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
@@ -125,6 +135,9 @@ class TrackerFragmentViewModel @Inject constructor(
                 timerTracker.startTimer()
                 disposables.add(timerTracker.listen().subscribe {
                     _timeCountLiveData.value = it
+                    val value = activityItem.costUnit * (it / 1000 / 60.0)
+                    _scoresLiveData.value =
+                        String.format("%.3f", value).replace(",", ".").toDouble()
                 })
             }
         }

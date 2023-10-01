@@ -64,6 +64,9 @@ class TrackerFragment : Fragment() {
             timeCountLiveData.observe(viewLifecycleOwner) {
                 binding.timeValueTv.text = it.toString()
             }
+            scoresLiveData.observe(viewLifecycleOwner){
+                binding.currentUnitsTv.text = it.toString()
+            }
             onPausedLiveData.observe(viewLifecycleOwner) {
                 binding.pauseButton
                     .setImageResource(if (it) R.drawable.ic_play else R.drawable.ic_pause)
