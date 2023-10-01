@@ -5,6 +5,7 @@ import com.synergysport.synergysportandroid.data.network.api.ActivitiesApi
 import com.synergysport.synergysportandroid.data.network.api.AuthApi
 import com.synergysport.synergysportandroid.data.network.api.MetricsApi
 import com.synergysport.synergysportandroid.data.network.api.ProfileApi
+import com.synergysport.synergysportandroid.data.network.api.TrainingsApi
 import com.synergysport.synergysportandroid.domain.handler.TokenDataHandler
 import dagger.Module
 import dagger.Provides
@@ -89,6 +90,10 @@ class NetworkModule {
     @Provides
     fun provideProfileApi(retrofit: Retrofit): ProfileApi =
         retrofit.create(ProfileApi::class.java)
+
+    @Provides
+    fun provideTrainingsApi(retrofit: Retrofit): TrainingsApi =
+        retrofit.create(TrainingsApi::class.java)
 }
 
 private class AuthInterceptor(

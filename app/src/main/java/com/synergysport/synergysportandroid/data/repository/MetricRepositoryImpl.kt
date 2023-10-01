@@ -1,6 +1,6 @@
 package com.synergysport.synergysportandroid.data.repository
 
-import com.synergysport.synergysportandroid.data.dto.MetricDataDto
+import com.synergysport.synergysportandroid.data.network.dto.MetricDataDto
 import com.synergysport.synergysportandroid.data.network.api.MetricsApi
 import com.synergysport.synergysportandroid.domain.entity.MetricData
 import com.synergysport.synergysportandroid.domain.repository.MetricsRepository

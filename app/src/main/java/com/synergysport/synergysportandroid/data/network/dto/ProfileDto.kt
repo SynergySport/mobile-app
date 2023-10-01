@@ -1,4 +1,4 @@
-package com.synergysport.synergysportandroid.data.dto
+package com.synergysport.synergysportandroid.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 import com.synergysport.synergysportandroid.domain.entity.Profile

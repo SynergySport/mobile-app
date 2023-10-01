@@ -4,10 +4,12 @@ import com.synergysport.synergysportandroid.data.repository.ActivitiesRepository
 import com.synergysport.synergysportandroid.data.repository.AuthRepositoryImpl
 import com.synergysport.synergysportandroid.data.repository.MetricRepositoryImpl
 import com.synergysport.synergysportandroid.data.repository.ProfileRepositoryImpl
+import com.synergysport.synergysportandroid.data.repository.TrainingsRepositoryImpl
 import com.synergysport.synergysportandroid.domain.repository.ActivitiesRepository
 import com.synergysport.synergysportandroid.domain.repository.AuthRepository
 import com.synergysport.synergysportandroid.domain.repository.MetricsRepository
 import com.synergysport.synergysportandroid.domain.repository.ProfileRepository
+import com.synergysport.synergysportandroid.domain.repository.TrainingsRepository
 import dagger.Binds
 import dagger.Module
 
@@ -24,4 +26,7 @@ abstract class RepositoryModule {
 
     @Binds
     abstract fun provideProfileRepository(profileRepository: ProfileRepositoryImpl): ProfileRepository
+
+    @Binds
+    abstract fun provideTrainingsRepository(trainingsRepository: TrainingsRepositoryImpl): TrainingsRepository
 }

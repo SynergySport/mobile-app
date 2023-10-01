@@ -4,8 +4,5 @@ data class Training(
     val id: Int,
     val type: String,
     val date: String,
-    val cores: Int,
-    val time: String,
-    val distance: String,
-    val speed: String
+    val cores: Double,
 )

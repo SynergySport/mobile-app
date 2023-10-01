@@ -47,7 +47,11 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
     }
 
     private fun bindViewModel() {
-
+        viewModel.trainingsLiveData.observe(viewLifecycleOwner) {
+            trainingsListAdapter.submitList(
+                it
+            )
+        }
     }
 
     private fun initViews() {
@@ -58,13 +62,6 @@ class TrainingsFragment : Fragment(R.layout.fragment_trainings) {
         trainingsListAdapter = TrainingsListAdapter()
         with(binding.trainingsRv) {
             adapter = trainingsListAdapter
-            trainingsListAdapter.submitList(
-                listOf(
-                    Training(0, "Бег", "20.12.2020 17:00", 5, "16 min", "100km", "20km/h"),
-                    Training(1, "Ходьба", "20.12.2021 17:00", 2, "16 min", "100km", "20km/h"),
-                    Training(2, "Спортзал", "20.12.2022 17:00", 8, "16 min", "100km", "20km/h"),
-                )
-            )
         }
     }
 }

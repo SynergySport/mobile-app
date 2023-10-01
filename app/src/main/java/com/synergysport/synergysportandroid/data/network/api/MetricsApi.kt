@@ -1,6 +1,6 @@
 package com.synergysport.synergysportandroid.data.network.api
 
-import com.synergysport.synergysportandroid.data.dto.MetricDataDto
+import com.synergysport.synergysportandroid.data.network.dto.MetricDataDto
 import io.reactivex.Completable
 import retrofit2.http.Body
 import retrofit2.http.POST

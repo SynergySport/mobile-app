@@ -1,7 +1,7 @@
 package com.synergysport.synergysportandroid.data.repository
 
 import android.content.Context
-import com.synergysport.synergysportandroid.data.dto.TokenData
+import com.synergysport.synergysportandroid.data.network.dto.TokenData
 import com.synergysport.synergysportandroid.domain.handler.TokenDataHandler
 import javax.inject.Inject
 

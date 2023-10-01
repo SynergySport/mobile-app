@@ -3,7 +3,7 @@ package com.synergysport.synergysportandroid.presentation.auth
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.synergysport.synergysportandroid.data.dto.UserData
+import com.synergysport.synergysportandroid.data.network.dto.UserData
 import com.synergysport.synergysportandroid.domain.useCase.AuthUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable

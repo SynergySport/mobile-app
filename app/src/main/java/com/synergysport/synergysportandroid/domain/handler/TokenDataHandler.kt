@@ -1,6 +1,6 @@
 package com.synergysport.synergysportandroid.domain.handler
 
-import com.synergysport.synergysportandroid.data.dto.TokenData
+import com.synergysport.synergysportandroid.data.network.dto.TokenData
 
 interface TokenDataHandler {
     fun saveToken(tokenData: TokenData)
