@@ -46,6 +46,7 @@ class SelectActivityFragment : Fragment(R.layout.fragment_select_activity) {
         initRecyclerView()
         initApplyButton()
         initTabs()
+        initBackButton()
     }
 
     private fun initApplyButton() {
@@ -60,6 +61,12 @@ class SelectActivityFragment : Fragment(R.layout.fragment_select_activity) {
         }
         binding.allTabButton.setOnClickListener {
             viewModel.onClickAll()
+        }
+    }
+
+    private fun initBackButton() {
+        binding.backButton.setOnClickListener {
+            Navigator.closeFragment(parentFragmentManager)
         }
     }
 
