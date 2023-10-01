@@ -3,6 +3,7 @@ package com.synergysport.synergysportandroid.di.modules
 import com.google.gson.Gson
 import com.synergysport.synergysportandroid.data.network.api.ActivitiesApi
 import com.synergysport.synergysportandroid.data.network.api.AuthApi
+import com.synergysport.synergysportandroid.data.network.api.EventsApi
 import com.synergysport.synergysportandroid.data.network.api.MetricsApi
 import com.synergysport.synergysportandroid.data.network.api.ProfileApi
 import com.synergysport.synergysportandroid.data.network.api.TrainingsApi
@@ -94,6 +95,10 @@ class NetworkModule {
     @Provides
     fun provideTrainingsApi(retrofit: Retrofit): TrainingsApi =
         retrofit.create(TrainingsApi::class.java)
+
+    @Provides
+    fun provideEventsApi(retrofit: Retrofit): EventsApi =
+        retrofit.create(EventsApi::class.java)
 }
 
 private class AuthInterceptor(
