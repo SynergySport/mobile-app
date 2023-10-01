@@ -43,15 +43,17 @@
         app:layout_constraintTop_toBottomOf="@id/title_layout">
 
         <TextView
+            android:id="@+id/favorite_tab_button"
             style="@style/NormalTextStyleWhite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:background="@drawable/round_button"
+            android:background="@drawable/bg_round_primary"
             android:padding="10dp"
             android:text="@string/favorites_tab_title" />
 
         <TextView
+            android:id="@+id/all_tab_button"
             style="@style/NormalTextStyleBlack"
             android:layout_width="70dp"
             android:layout_height="wrap_content"

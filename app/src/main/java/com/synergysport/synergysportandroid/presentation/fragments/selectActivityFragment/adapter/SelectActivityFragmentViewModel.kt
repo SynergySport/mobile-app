@@ -19,23 +19,35 @@ class SelectActivityFragmentViewModel @Inject constructor(
     val allActivitiesLiveData: LiveData<List<ActivityItem>>
         get() = _allActivitiesLiveData
 
+    private val _favoriteActivitiesLiveData = MutableLiveData<List<ActivityItem>>()
+    val favoriteActivitiesLiveData: LiveData<List<ActivityItem>>
+        get() = _favoriteActivitiesLiveData
+
     private val _selectedActivityItemLiveData = MutableLiveData<ActivityItem>()
 
     private val _shouldCloseScreenLiveData = MutableLiveData<Unit>()
     val shouldCloseScreenLiveData: LiveData<Unit>
         get() = _shouldCloseScreenLiveData
 
+    private val _onClickFavoriteLiveData = MutableLiveData<Unit>()
+    val onClickFavoriteLiveData: LiveData<Unit>
+        get() = _onClickFavoriteLiveData
+
+    private val _onClickAllLiveData = MutableLiveData<Unit>()
+    val onClickAllLiveData: LiveData<Unit>
+        get() = _onClickAllLiveData
+
     private val disposables = CompositeDisposable()
 
     fun init() {
-        getAllActivities()
+        getFavoriteActivities()
     }
 
-    private fun getAllActivities() {
+    private fun getFavoriteActivities() {
         disposables.add(
-            getActivitiesUseCase.getAllActivities().subscribeOn(Schedulers.io())
+            getActivitiesUseCase.getFavoriteActivities().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread()).subscribe({
-                    _allActivitiesLiveData.value = it
+                    _favoriteActivitiesLiveData.value = it
                 }, {
                     it.printStackTrace()
                 })
@@ -59,6 +71,30 @@ class SelectActivityFragmentViewModel @Inject constructor(
             )
         }
         _shouldCloseScreenLiveData.value = Unit
+    }
+
+    fun onClickFavorite() {
+        _onClickFavoriteLiveData.value = Unit
+        disposables.add(
+            getActivitiesUseCase.getFavoriteActivities().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    _favoriteActivitiesLiveData.value = it
+                }, {
+                    it.printStackTrace()
+                })
+        )
+    }
+
+    fun onClickAll() {
+        _onClickAllLiveData.value = Unit
+        disposables.add(
+            getActivitiesUseCase.getAllActivities().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread()).subscribe({
+                    _allActivitiesLiveData.value = it
+                }, {
+                    it.printStackTrace()
+                })
+        )
     }
 
     override fun onCleared() {
