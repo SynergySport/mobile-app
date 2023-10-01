@@ -16,7 +16,7 @@ class TrainingsRepositoryImpl @Inject constructor(
             it.map {
                 Training(
                     id = it.id,
-                    type = "None",
+                    type = "Тренировка: ${it.id}",
                     date = it.date,
                     cores = it.countUnit
                 )
