@@ -10,6 +10,8 @@ import com.synergysport.synergysportandroid.domain.useCase.SendMetricsUseCase
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
+import java.text.SimpleDateFormat
+import java.util.Calendar
 import javax.inject.Inject
 
 class TrackerFragmentViewModel @Inject constructor(
@@ -51,6 +53,7 @@ class TrackerFragmentViewModel @Inject constructor(
     val currentUnitLiveData: LiveData<String>
         get() = _currentUnitLiveData
 
+    private var startDate = ""
 
     private val disposables = CompositeDisposable()
 
@@ -64,8 +67,8 @@ class TrackerFragmentViewModel @Inject constructor(
             sendMetricsUseCase.sendMetrics(
                 MetricData(
                     activityId = setSelectedActivityLiveData.value!!.id,
-                    startDate = "2023-09-25T20:50:55Z",
-                    endDate = "2023-09-25T20:50:55Z",
+                    startDate = startDate,
+                    endDate = getCurrentDate(),
                     countUnit = _scoresLiveData.value!!
                 )
             ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe({
@@ -112,6 +115,7 @@ class TrackerFragmentViewModel @Inject constructor(
 
     private fun proceedActivity(activityItem: ActivityItem) {
         _currentUnitLiveData.value = activityItem.unit
+        startDate = getCurrentDate()
         when (activityItem.unit) {
             UNIT_STEP -> {
                 timerTracker.startTimer()
@@ -155,6 +159,12 @@ class TrackerFragmentViewModel @Inject constructor(
                 })
             }
         }
+    }
+
+    private fun getCurrentDate(): String {
+        val currentDateTime: Calendar = Calendar.getInstance()
+        val formatter = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'")
+        return formatter.format(currentDateTime.time)
     }
 
     override fun onCleared() {
