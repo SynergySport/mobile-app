@@ -76,10 +76,6 @@ class MainActivity : AppCompatActivity(), ToolbarVisibilityListener {
                     Navigator.navigateReplace(TrainingsFragment(), supportFragmentManager)
                 }
 
-                R.id.nav_my_achievements -> {
-                    Navigator.navigateReplace(AchievementsFragment(), supportFragmentManager)
-                }
-
                 R.id.nav_events -> {
                     Navigator.navigateReplace(EventsFragment(), supportFragmentManager)
                 }

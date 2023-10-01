@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".presentation.fragments.startTrainingFragment.StartTrainingFragment">
 
+    <ImageView
+        android:id="@+id/synergy_sport_image"
+        android:layout_width="0dp"
+        android:layout_height="340dp"
+        android:layout_gravity="center"
+        android:importantForAccessibility="no"
+        android:src="@drawable/start_training_logo"
+        app:layout_constraintBottom_toTopOf="@+id/start_tracker_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/start_tracker_button"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_margin="40dp"
-        android:background="@drawable/round_button"
+        android:background="@drawable/bg_round_primary"
         android:gravity="center"
         android:padding="15dp"
         android:text="@string/start_training_button"
@@ -25,7 +37,7 @@
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:layout_margin="50dp"
-        android:background="@drawable/round_button"
+        android:background="@drawable/bg_round_primary"
         android:gravity="center"
         android:padding="12dp"
         android:src="@drawable/ic_run"

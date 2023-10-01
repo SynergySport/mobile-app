@@ -22,7 +22,7 @@
         android:layout_height="340dp"
         android:layout_gravity="center"
         android:importantForAccessibility="no"
-        android:src="@drawable/synergy_sport_icon"
+        android:src="@drawable/logo_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_image" />

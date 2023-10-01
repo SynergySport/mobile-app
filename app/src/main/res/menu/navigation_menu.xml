@@ -16,10 +16,6 @@
         android:title="@string/my_trainings" />
 
     <item
-        android:id="@+id/nav_my_achievements"
-        android:title="@string/my_achievements" />
-
-    <item
         android:id="@+id/nav_events"
         android:title="@string/events" />
 
