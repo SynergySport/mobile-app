@@ -13,7 +13,7 @@ import com.synergysport.synergysportandroid.presentation.auth.AuthFragmentViewMo
 import com.synergysport.synergysportandroid.presentation.common.ToolbarVisibilityListener
 import javax.inject.Inject
 
-class ProfileFragment : Fragment(R.layout.fragment_profile) {
+class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding
 
